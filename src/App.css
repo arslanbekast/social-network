@@ -3,7 +3,7 @@
 
   grid-template-areas:
   "header header"
-  "sidebar content";
+  "navbar content";
   max-width: 1200px;
   margin: 0 auto;
   grid-template-rows: 60px 1fr;

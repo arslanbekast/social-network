@@ -1,9 +1,9 @@
 import React from 'react';
-import s from './Sidebar.module.css'
+import s from './Navbar.module.css'
 
-export const Sidebar = () => {
+export const Navbar = () => {
     return (
-        <aside className={s.sidebar}>
+        <aside className={s.navbar}>
             <nav className={s.nav}>
                 <ul>
                     <li className={`${s.item} ${s.active}`}><a href='#'>Profile</a></li>
