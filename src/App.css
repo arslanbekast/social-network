@@ -11,28 +11,3 @@
   gap: 10px;
 
 }
-
-.header {
-  grid-area: header;
-  display: flex;
-  align-items: center;
-  background-color: rgba(66, 68, 110, 0.86);
-}
-.header img {
-  max-width: 50px;
-}
-.sidebar {
-  grid-area: sidebar;
-  background-color: #ffa9b7;
-}
-.content {
-  grid-area: content;
-  background-color: #77f0ff;
-}
-.main-img_block {
-  max-height: 300px;
-  overflow: hidden;
-}
-.main-img_block img {
-  object-fit: cover;
-}

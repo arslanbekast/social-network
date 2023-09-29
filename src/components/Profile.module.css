@@ -1,0 +1,11 @@
+.content {
+    grid-area: content;
+    background-color: #77f0ff;
+}
+.imgBox {
+    max-height: 300px;
+    overflow: hidden;
+}
+.imgBox img {
+    object-fit: cover;
+}

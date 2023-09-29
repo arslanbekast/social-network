@@ -1,11 +1,12 @@
 import React from 'react';
 import mainImg from "../assets/images/main-image.jpg";
+import s from './Profile.module.css'
 
 export const Profile = () => {
     return (
-        <main className='content'>
+        <main className={s.content}>
 
-            <div className='main-img_block'>
+            <div className={s.imgBox}>
                 <img src={mainImg} alt="main image"/>
             </div>
 

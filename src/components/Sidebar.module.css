@@ -1,0 +1,13 @@
+.sidebar {
+    grid-area: sidebar;
+    background-color: #ffa9b7;
+}
+.nav ul{
+    list-style: none;
+}
+.item a{
+    color: white;
+}
+.item.active a{
+    color: gold;
+}
