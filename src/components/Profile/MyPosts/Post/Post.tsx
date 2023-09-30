@@ -4,6 +4,7 @@ import noPhoto from '../../../../assets/images/noPhoto.jpg'
 
 type PostPropsType = {
     message: string
+    likesCount: number
 }
 
 export const Post: FC<PostPropsType> = (props) => {
@@ -12,7 +13,7 @@ export const Post: FC<PostPropsType> = (props) => {
             <img src={noPhoto} alt=""/>
             {props.message}
             <div>
-                <button>Like</button>
+                <button>Like </button> {props.likesCount}
             </div>
         </div>
     );
