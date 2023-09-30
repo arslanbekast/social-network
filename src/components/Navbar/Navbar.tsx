@@ -1,7 +1,7 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from './Navbar.module.css'
 
-export const Navbar = () => {
+export const Navbar: FC = () => {
     return (
         <aside className={s.navbar}>
             <nav className={s.nav}>

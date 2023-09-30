@@ -1,8 +1,8 @@
-import React from 'react';
+import React, {FC} from 'react';
 import s from "./Post.module.css";
 import noPhoto from '../../../../assets/images/noPhoto.jpg'
 
-export const Post = () => {
+export const Post: FC = () => {
     return (
         <div className={s.item}>
             <img src={noPhoto} alt=""/>

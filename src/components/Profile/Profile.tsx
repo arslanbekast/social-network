@@ -1,9 +1,9 @@
-import React from 'react';
+import React, {FC} from 'react';
 import mainImg from "../../assets/images/main-image.jpg";
 import s from './Profile.module.css'
 import {MyPosts} from "./MyPosts/MyPosts";
 
-export const Profile = () => {
+export const Profile: FC = () => {
     return (
         <main className={s.content}>
 
