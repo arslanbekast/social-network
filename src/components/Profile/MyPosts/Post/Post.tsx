@@ -2,11 +2,15 @@ import React, {FC} from 'react';
 import s from "./Post.module.css";
 import noPhoto from '../../../../assets/images/noPhoto.jpg'
 
-export const Post: FC = () => {
+type PostPropsType = {
+    message: string
+}
+
+export const Post: FC<PostPropsType> = (props) => {
     return (
         <div className={s.item}>
             <img src={noPhoto} alt=""/>
-            post 1
+            {props.message}
             <div>
                 <button>Like</button>
             </div>
