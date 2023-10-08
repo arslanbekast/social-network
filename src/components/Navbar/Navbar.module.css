@@ -7,7 +7,9 @@
 }
 .item a{
     color: white;
+    text-decoration: none;
 }
-.item.active a{
-    color: gold;
+.item a.active{
+    color: rgba(66, 68, 110, 0.86);
+    font-weight: 700;
 }
