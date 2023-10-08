@@ -5,8 +5,7 @@ import {MyPosts} from "./MyPosts/MyPosts";
 
 export const Profile: FC = () => {
     return (
-        <main className={s.content}>
-
+        <div>
             <div className={s.imgBox}>
                 <img src={mainImg} alt="main image"/>
             </div>
@@ -16,6 +15,6 @@ export const Profile: FC = () => {
             </div>
             <MyPosts/>
 
-        </main>
+        </div>
     );
 };
