@@ -11,3 +11,8 @@
   gap: 10px;
 
 }
+
+.main-wrapper {
+  grid-area: content;
+  background-color: #77f0ff;
+}
