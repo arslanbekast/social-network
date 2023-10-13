@@ -1,7 +1,0 @@
-.imgBox {
-    max-height: 300px;
-    overflow: hidden;
-}
-.imgBox img {
-    object-fit: cover;
-}
