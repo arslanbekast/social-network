@@ -5,3 +5,6 @@
 .imgBox img {
     object-fit: cover;
 }
+.descBlock {
+    padding: 10px;
+}

@@ -9,7 +9,7 @@ export const ProfileInfo = () => {
                 <img src={mainImg} alt="main image"/>
             </div>
 
-            <div>
+            <div className={s.descBlock}>
                 ava + description
             </div>
         </div>
