@@ -16,7 +16,6 @@ type AppPropsType = {
 
 function App({state}: AppPropsType) {
     return (
-        <BrowserRouter>
             <div className="app-wrapper">
                 <Header/>
                 <Navbar/>
@@ -28,7 +27,6 @@ function App({state}: AppPropsType) {
                     <Route path={'/settings'} component={Settings} />
                 </main>
             </div>
-        </BrowserRouter>
     );
 }
 
