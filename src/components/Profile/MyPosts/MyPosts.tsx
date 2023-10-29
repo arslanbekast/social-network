@@ -9,15 +9,22 @@ type MyPostsPropsType = {
 
 export const MyPosts: FC<MyPostsPropsType> = ({posts}) => {
 
+    const newPostElement = React.createRef<HTMLTextAreaElement>()
+
+    const addPost = () => {
+        let text = newPostElement.current?.value
+        alert(text)
+    }
+
     return (
         <div className={s.postsBlock}>
             <h2>My posts</h2>
             <div>
                 <div>
-                    <textarea></textarea>
+                    <textarea ref={newPostElement}></textarea>
                 </div>
                 <div>
-                    <button>Add post</button>
+                    <button onClick={addPost}>Add post</button>
                 </div>
 
             </div>
