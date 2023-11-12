@@ -38,6 +38,9 @@ type UpdateNewPostTextActionType = {
 }
 export type ActionsType = AddPostActionType | UpdateNewPostTextActionType
 
+const ADD_POST = 'ADD-POST' as const
+const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT' as const
+
 export const store = {
     _state: {
         profilePage: {
@@ -78,7 +81,7 @@ export const store = {
         this._callSubscriber = observer;
     },
     dispatch(action: ActionsType) { // { type: 'ADD-POST' }
-        if (action.type === 'ADD-POST') {
+        if (action.type === ADD_POST) {
             const newPost = {
                 id: 5,
                 message: this._state.profilePage.newPostText,
@@ -87,12 +90,16 @@ export const store = {
             this._state.profilePage.posts.push(newPost)
             this._state.profilePage.newPostText = ''
             this._callSubscriber(this.getState());
-        } else if (action.type === 'UPDATE-NEW-POST-TEXT') {
+        } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this.getState());
         }
     }
 }
+
+export const addPostActionCreator = () => ({type: ADD_POST})
+
+export const UpdateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT,newText: text})
 
 // window.store = store;
 
