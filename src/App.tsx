@@ -23,7 +23,8 @@ function App({state, dispatch}: AppPropsType) {
                 <main className='main-wrapper'>
                     <Route path={'/profile'} render={ () => <Profile profilePage={state.profilePage}
                                                                      dispatch={dispatch} /> } />
-                    <Route path={'/dialogs'} render={ () => <Dialogs state={state.dialogsPage}/> } />
+                    <Route path={'/dialogs'} render={ () => <Dialogs dialogsPage={state.dialogsPage}
+                                                                     dispatch={dispatch}/> } />
                     <Route path={'/news'} component={News} />
                     <Route path={'/music'} component={Music} />
                     <Route path={'/settings'} component={Settings} />

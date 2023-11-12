@@ -1,3 +1,5 @@
+import {message} from "antd";
+
 export type PostType = {
     id: number
     message: string
@@ -22,6 +24,7 @@ export type ProfilePageType = {
 export type DialogsPageType = {
     dialogs: DialogType[]
     messages: MessageType[]
+    newMessageText: string
 }
 
 export type StateType = {
@@ -36,10 +39,22 @@ type UpdateNewPostTextActionType = {
     type: 'UPDATE-NEW-POST-TEXT'
     newText: string
 }
-export type ActionsType = AddPostActionType | UpdateNewPostTextActionType
+type UpdateNewMessageTextActionType = {
+    type: 'UPDATE-NEW-MESSAGE-TEXT'
+    messageText: string
+}
+type SendMessageActionType = {
+    type: 'SEND-MESSAGE'
+}
+export type ActionsType = AddPostActionType
+    | UpdateNewPostTextActionType
+    | UpdateNewMessageTextActionType
+    | SendMessageActionType
 
 const ADD_POST = 'ADD-POST' as const
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT' as const
+const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT' as const
+const SEND_MESSAGE = 'SEND-MESSAGE' as const
 
 export const store = {
     _state: {
@@ -67,7 +82,8 @@ export const store = {
                 {id: 3, message: 'Yo'},
                 {id: 4, message: 'Yo'},
                 {id: 5, message: 'Yo'}
-            ]
+            ],
+            newMessageText: ''
         },
         sidebar: {}
     },
@@ -93,13 +109,28 @@ export const store = {
         } else if (action.type === UPDATE_NEW_POST_TEXT) {
             this._state.profilePage.newPostText = action.newText
             this._callSubscriber(this.getState());
+        } else if (action.type === UPDATE_NEW_MESSAGE_TEXT) {
+            this._state.dialogsPage.newMessageText = action.messageText
+            this._callSubscriber(this.getState());
+        } else if (action.type === SEND_MESSAGE) {
+            const newMessage = {
+                id: 6,
+                message: this._state.dialogsPage.newMessageText
+            }
+            this._state.dialogsPage.messages.push(newMessage)
+            this._state.dialogsPage.newMessageText = ''
+            this._callSubscriber(this.getState());
         }
     }
 }
 
 export const addPostActionCreator = () => ({type: ADD_POST})
 
-export const UpdateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT,newText: text})
+export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+
+export const updateNewMessageTextActionCreator = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
+
+export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
 
 // window.store = store;
 

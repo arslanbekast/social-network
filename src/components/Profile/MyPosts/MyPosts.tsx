@@ -1,7 +1,7 @@
 import React, {ChangeEvent, FC} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {ActionsType, addPostActionCreator, PostType, UpdateNewPostTextActionCreator} from "../../../redux/state";
+import {ActionsType, addPostActionCreator, PostType, updateNewPostTextActionCreator} from "../../../redux/state";
 
 type MyPostsPropsType = {
     posts: PostType[]
@@ -22,7 +22,7 @@ export const MyPosts: FC<MyPostsPropsType> = ({posts, newPostText, dispatch}) =>
     const onChangeHandler = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            dispatch(UpdateNewPostTextActionCreator(text))
+            dispatch(updateNewPostTextActionCreator(text))
         }
     }
 
