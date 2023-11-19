@@ -1,6 +1,8 @@
-import {ActionsType, SideBarType} from "./state";
+import {ActionsType, SideBarType} from "./store";
 
-export const sidebarReducer = (state: SideBarType, action: ActionsType) => {
+const initialState = {}
+
+export const sidebarReducer = (state: SideBarType = initialState, action: ActionsType) => {
 
     return state
 }

@@ -107,8 +107,8 @@ export const store = {
 
 
 
-
-// window.store = store;
+// @ts-ignore
+window.store = store;
 
 
 
