@@ -7,23 +7,24 @@ import {addPostActionCreator, updateNewPostTextActionCreator} from "../../../red
 type MyPostsPropsType = {
     posts: PostType[]
     newPostText: string
-    dispatch: (action: ActionsType) => void
+    updateNewPostText: (text: string) => void
+    addPost: () => void
 }
 
 
 
-export const MyPosts: FC<MyPostsPropsType> = ({posts, newPostText, dispatch}) => {
+export const MyPosts: FC<MyPostsPropsType> = ({posts, newPostText, updateNewPostText, addPost}) => {
 
     const newPostElement = React.createRef<HTMLTextAreaElement>()
 
-    const addPostHandler = () => {
-        dispatch(addPostActionCreator())
+    const onAddPost = () => {
+        addPost();
     }
 
     const onChangeHandler = () => {
         if (newPostElement.current) {
             let text = newPostElement.current.value
-            dispatch(updateNewPostTextActionCreator(text))
+            updateNewPostText(text);
         }
     }
 
@@ -35,7 +36,7 @@ export const MyPosts: FC<MyPostsPropsType> = ({posts, newPostText, dispatch}) =>
                     <textarea ref={newPostElement} value={newPostText} onChange={onChangeHandler}/>
                 </div>
                 <div>
-                    <button onClick={addPostHandler}>Add post</button>
+                    <button onClick={onAddPost}>Add post</button>
                 </div>
 
             </div>
