@@ -15,9 +15,9 @@ const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT' as const
 const initialState = {
         posts: [
             {id: 1, message: "Hi, how are you?", likesCount: 0},
-            {id: 2, message: "It's my first post", likesCount: 25},
-            {id: 2, message: "Blabla", likesCount: 13},
-            {id: 2, message: "Dadad", likesCount: 22},
+            {id: 3, message: "It's my first post", likesCount: 25},
+            {id: 4, message: "Blabla", likesCount: 13},
+            {id: 5, message: "Dadad", likesCount: 22},
         ],
         newPostText: 'it-kamasutra.com'
     }
@@ -31,12 +31,9 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
                 message: state.newPostText,
                 likesCount: 0
             }
-            state.posts.push(newPost)
-            state.newPostText = ''
-            return state
+            return {...state, posts: [newPost, ...state.posts], newPostText: ''}
         case UPDATE_NEW_POST_TEXT:
-            state.newPostText = action.newText
-            return state
+            return {...state, newPostText: action.newText}
         default:
             return state
     }
