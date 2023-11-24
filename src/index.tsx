@@ -7,24 +7,12 @@ import {BrowserRouter} from "react-router-dom";
 import {Provider} from "react-redux";
 
 
-const rerenderEntireTree = () => {
-    ReactDOM.render(
-        <BrowserRouter>
-            <Provider store={store}>
-                <App />
-            </Provider>
+ReactDOM.render(
+    <BrowserRouter>
+        <Provider store={store}>
+            <App />
+        </Provider>
 
-        </BrowserRouter>,
-        document.getElementById('root')
-    );
-}
-rerenderEntireTree()
-store.subscribe(() => rerenderEntireTree());
-
-
-// ReactDOM.render(
-//     <BrowserRouter>
-//         <App state={state} addPost={addPost}/>
-//     </BrowserRouter>,
-//   document.getElementById('root')
-// );
+    </BrowserRouter>,
+    document.getElementById('root')
+);
