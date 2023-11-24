@@ -1,4 +1,5 @@
 import {ActionsType, DialogsPageType} from "./store";
+import {v1} from "uuid";
 
 // type UpdateNewMessageTextActionType = {
 //     type: 'UPDATE-NEW-MESSAGE-TEXT'
