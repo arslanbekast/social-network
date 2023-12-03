@@ -1,14 +1,6 @@
-import {ActionsType, DialogsPageType} from "./store";
-import {v1} from "uuid";
+import {DialogsPageType} from "./store";
 
-// type UpdateNewMessageTextActionType = {
-//     type: 'UPDATE-NEW-MESSAGE-TEXT'
-//     messageText: string
-// }
-// type SendMessageActionType = {
-//     type: 'SEND-MESSAGE'
-// }
-// type ActionsType = UpdateNewMessageTextActionType | SendMessageActionType
+export type DialogsActionsType = UpdateNewMessageTextActionType | SendMessageActionType
 
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT' as const
 const SEND_MESSAGE = 'SEND-MESSAGE' as const
@@ -32,7 +24,7 @@ const initialState = {
     newMessageText: ''
 }
 
-export const dialogsReducer = (state: DialogsPageType = initialState, action: ActionsType) => {
+export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType => {
 
     switch (action.type) {
         case "UPDATE-NEW-MESSAGE-TEXT":
@@ -49,6 +41,8 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Ac
 
 }
 
-export const updateNewMessageTextActionCreator = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
+type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextAC>
+export const updateNewMessageTextAC = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
 
-export const sendMessageActionCreator = () => ({type: SEND_MESSAGE})
+type SendMessageActionType = ReturnType<typeof sendMessageAC>
+export const sendMessageAC = () => ({type: SEND_MESSAGE})
