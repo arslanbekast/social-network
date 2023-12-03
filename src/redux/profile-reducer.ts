@@ -4,14 +4,7 @@ import {v1} from "uuid";
 const ADD_POST = 'ADD-POST' as const
 const UPDATE_NEW_POST_TEXT = 'UPDATE-NEW-POST-TEXT' as const
 
-// type AddPostActionType = {
-//     type: 'ADD-POST'
-// }
-// type UpdateNewPostTextActionType = {
-//     type: 'UPDATE-NEW-POST-TEXT'
-//     newText: string
-// }
-// type ActionsType = AddPostActionType | UpdateNewPostTextActionType
+export type ProfileActionsType = AddPostActionType | UpdateNewPostTextActionType
 
 const initialState = {
         posts: [
@@ -23,7 +16,7 @@ const initialState = {
         newPostText: 'it-kamasutra.com'
     }
 
-export const profileReducer = (state: ProfilePageType = initialState, action: ActionsType) => {
+export const profileReducer = (state: ProfilePageType = initialState, action: ProfileActionsType): ProfilePageType => {
 
     switch (action.type) {
         case ADD_POST:
@@ -41,6 +34,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Ac
 
 }
 
-export const addPostActionCreator = () => ({type: ADD_POST})
+type AddPostActionType = ReturnType<typeof addPostAC>
+export const addPostAC = () => ({type: ADD_POST})
 
-export const updateNewPostTextActionCreator = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
+type UpdateNewPostTextActionType = ReturnType<typeof updateNewPostTextAC>
+export const updateNewPostTextAC = (text: string) => ({type: UPDATE_NEW_POST_TEXT, newText: text})
