@@ -22,6 +22,9 @@ export const Navbar: FC = () => {
                     <li className={s.item}>
                         <NavLink to='/settings'  activeClassName={s.active}>Settings</NavLink>
                     </li>
+                    <li className={s.item}>
+                        <NavLink to='/users'  activeClassName={s.active}>Users</NavLink>
+                    </li>
                 </ul>
             </nav>
         </aside>
