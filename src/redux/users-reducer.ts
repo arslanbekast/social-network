@@ -1,9 +1,12 @@
-import {ActionsType, ProfilePageType} from "./store";
-import {v1} from "uuid";
 
 const FOLLOW = 'FOLLOW' as const
 const UNFOLLOW = 'UNFOLLOW' as const
 const SET_USERS = 'SET_USERS' as const
+
+type PhotosType = {
+    small: string | null
+    large: string | null
+}
 
 type LocationType = {
     city: string
@@ -11,11 +14,12 @@ type LocationType = {
 }
 export type UsersType = {
     id: number
-    photoUrl: string
+    photos: PhotosType
     followed: boolean
-    fullName: string
+    name: string
     status: string
-    location: LocationType
+    uniqueUrlName: string | null
+    // location: LocationType
 }
 type UsersStateType = {
     users: UsersType[]
