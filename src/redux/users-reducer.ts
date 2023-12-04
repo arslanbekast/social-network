@@ -12,7 +12,7 @@ type LocationType = {
     city: string
     country: string
 }
-export type UsersType = {
+export type UserType = {
     id: number
     photos: PhotosType
     followed: boolean
@@ -22,7 +22,7 @@ export type UsersType = {
     // location: LocationType
 }
 type UsersStateType = {
-    users: UsersType[]
+    users: UserType[]
 }
 
 const initialState = {
@@ -63,4 +63,4 @@ type UnFollowActionType = ReturnType<typeof unFollowAC>
 export const unFollowAC = (userId: number) => ( {type: UNFOLLOW, userId} )
 
 type SetUsersActionType = ReturnType<typeof setUsersAC>
-export const setUsersAC = (users: UsersType[]) => ( {type: SET_USERS, users} )
+export const setUsersAC = (users: UserType[]) => ( {type: SET_USERS, users} )
