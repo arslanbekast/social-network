@@ -13,8 +13,7 @@ type UsersPropsType = {
 
 export class Users extends React.Component<UsersPropsType, any>{
 
-    constructor(props: UsersPropsType) {
-        super(props);
+    componentDidMount() {
         this.getUsers()
     }
 
@@ -26,7 +25,6 @@ export class Users extends React.Component<UsersPropsType, any>{
     render() {
         return (
             <div className={s.usersContent}>
-                {/*<button onClick={this.getUsers}>Get Users</button>*/}
                 {
                     this.props.users.map((u: UserType) => {
                         return (
