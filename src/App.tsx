@@ -7,17 +7,8 @@ import {Route} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
-import {ActionsType, StateType} from "./redux/store";
-import {StoreType} from "./redux/redux-store";
 import {DialogsContainer} from "./components/Dialogs/DialogsContainer";
-import {Users} from "./components/Users/Users";
 import UsersContainer from "./components/Users/UsersContainer";
-
-type AppPropsType = {
-    // store: StoreType
-    // state: StateType
-    // dispatch: (action: ActionsType) => void
-}
 
 function App() {
     return (
