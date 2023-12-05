@@ -2,6 +2,8 @@
 const FOLLOW = 'FOLLOW' as const
 const UNFOLLOW = 'UNFOLLOW' as const
 const SET_USERS = 'SET_USERS' as const
+const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE' as const
+const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT' as const
 
 type PhotosType = {
     small: string | null
@@ -23,14 +25,16 @@ export type UserType = {
 }
 type UsersStateType = {
     users: UserType[]
+    pageSize: number
+    totalUsersCount: number
+    currentPage: number
 }
 
 const initialState = {
-        users: [
-            // {id: 1, photoUrl: 'https://cybersecurity-excellence-awards.com/wp-content/uploads/2021/01/676420.jpg', followed: false, fullName: "Dmitry", status: 'I am boss', location: {city: 'Minsk', country: 'Belarus'}},
-            // {id: 2, photoUrl: 'https://cybersecurity-excellence-awards.com/wp-content/uploads/2021/01/676420.jpg', followed: true, fullName: "Sasha", status: 'I am boss too', location: {city: 'Moscow', country: 'Russia'}},
-            // {id: 3, photoUrl: 'https://cybersecurity-excellence-awards.com/wp-content/uploads/2021/01/676420.jpg', followed: false, fullName: "Andrew", status: 'I am boss too', location: {city: 'Kiev', country: 'Ukraine'}}
-        ]
+    users: [],
+    pageSize: 100,
+    totalUsersCount: 0,
+    currentPage: 1
     }
 
 export const usersReducer = (state: UsersStateType = initialState, action: UsersActionsType): UsersStateType => {
@@ -47,14 +51,18 @@ export const usersReducer = (state: UsersStateType = initialState, action: Users
                 users: state.users.map(u => u.id === action.userId ? {...u, followed: false} : u)
             }
         case SET_USERS:
-            return {...state, users: [...state.users, ...action.users]}
+            return {...state, users: action.users}
+        case SET_CURRENT_PAGE:
+            return {...state, currentPage: action.currentPage}
+        case SET_TOTAL_USERS_COUNT:
+            return {...state, totalUsersCount: action.totalUsersCount}
         default:
             return state
     }
 
 }
 
-export type UsersActionsType = FollowActionType | UnFollowActionType | SetUsersActionType
+export type UsersActionsType = FollowActionType | UnFollowActionType | SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType
 
 type FollowActionType = ReturnType<typeof followAC>
 export const followAC = (userId: number) => ( {type: FOLLOW, userId} )
@@ -64,3 +72,9 @@ export const unFollowAC = (userId: number) => ( {type: UNFOLLOW, userId} )
 
 type SetUsersActionType = ReturnType<typeof setUsersAC>
 export const setUsersAC = (users: UserType[]) => ( {type: SET_USERS, users} )
+
+type SetCurrentPageActionType = ReturnType<typeof setCurrentPageAC>
+export const setCurrentPageAC = (currentPage: number) => ( {type: SET_CURRENT_PAGE, currentPage} )
+
+type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCountAC>
+export const setTotalUsersCountAC = (totalUsersCount: number) => ( {type: SET_TOTAL_USERS_COUNT, totalUsersCount} )
