@@ -9,7 +9,7 @@ type UsersPropsType = {
     totalUsersCount: number
     currentPage: number
     follow: (userId: number) => void
-    unfollow: (userId: number) => void
+    unFollow: (userId: number) => void
     // setUsers: (users: UserType[]) => void
     // setCurrentPage: (page: number) => void
     // setTotalUsersCount: (totalUsersCount: number) => void
@@ -45,7 +45,7 @@ export const Users: FC<UsersPropsType> = (props) => {
                                 </div>
                                 <div>
                                     {u.followed
-                                        ? <button onClick={() => props.unfollow(u.id)}>Unfollow</button>
+                                        ? <button onClick={() => props.unFollow(u.id)}>Unfollow</button>
                                         : <button onClick={() => props.follow(u.id)}>Follow</button>}
                                 </div>
                             </div>
