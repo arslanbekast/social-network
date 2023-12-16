@@ -1,4 +1,4 @@
-import {profileReducer} from "./profile-reducer";
+import {profileReducer, ProfileType} from "./profile-reducer";
 import {dialogsReducer} from "./dialogs-reducer";
 import {sidebarReducer} from "./sidebar-reducer";
 
@@ -21,6 +21,7 @@ export type DialogType = {
 export type ProfilePageType = {
     posts: PostType[]
     newPostText: string
+    profile: ProfileType | null
 
 }
 export type DialogsPageType = {

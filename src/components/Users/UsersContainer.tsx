@@ -14,7 +14,7 @@ import {Users} from "./Users";
 import {Preloader} from "../Preloader/Preloader";
 
 
-type UsersAPIComponentPropsType = {
+type UsersContainerPropsType = {
     users: UserType[]
     pageSize: number
     totalUsersCount: number
@@ -28,7 +28,7 @@ type UsersAPIComponentPropsType = {
     toggleIsFetching: (isFetching: boolean) => void
 }
 
-class UsersContainer extends React.Component<UsersAPIComponentPropsType>{
+class UsersContainer extends React.Component<UsersContainerPropsType>{
 
     componentDidMount() {
         this.props.toggleIsFetching(true)
@@ -111,3 +111,5 @@ const mapStateToProps = (state: StateType) => {
 
 export default connect(mapStateToProps,
     {follow, unFollow, setUsers, setCurrentPage, setTotalUsersCount, toggleIsFetching})(UsersContainer)
+
+// export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer)
