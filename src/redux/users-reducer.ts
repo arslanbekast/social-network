@@ -1,9 +1,9 @@
-
 const FOLLOW = 'FOLLOW' as const
 const UNFOLLOW = 'UNFOLLOW' as const
 const SET_USERS = 'SET_USERS' as const
 const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE' as const
 const SET_TOTAL_USERS_COUNT = 'SET_TOTAL_USERS_COUNT' as const
+const TOGGLE_IS_FETCHING = 'TOGGLE_IS_FETCHING' as const
 
 type PhotosType = {
     small: string | null
@@ -28,14 +28,16 @@ type UsersStateType = {
     pageSize: number
     totalUsersCount: number
     currentPage: number
+    isFetching: boolean
 }
 
 const initialState = {
     users: [],
     pageSize: 100,
     totalUsersCount: 0,
-    currentPage: 1
-    }
+    currentPage: 1,
+    isFetching: false
+}
 
 export const usersReducer = (state: UsersStateType = initialState, action: UsersActionsType): UsersStateType => {
 
@@ -56,25 +58,35 @@ export const usersReducer = (state: UsersStateType = initialState, action: Users
             return {...state, currentPage: action.currentPage}
         case SET_TOTAL_USERS_COUNT:
             return {...state, totalUsersCount: action.totalUsersCount}
+        case TOGGLE_IS_FETCHING:
+            return {...state, isFetching: action.isFetching}
         default:
             return state
     }
 
 }
 
-export type UsersActionsType = FollowActionType | UnFollowActionType | SetUsersActionType | SetCurrentPageActionType | SetTotalUsersCountActionType
+export type UsersActionsType = FollowActionType
+    | UnFollowActionType
+    | SetUsersActionType
+    | SetCurrentPageActionType
+    | SetTotalUsersCountActionType
+    | ToggleIsFetchingActionType
 
 type FollowActionType = ReturnType<typeof followAC>
-export const followAC = (userId: number) => ( {type: FOLLOW, userId} )
+export const followAC = (userId: number) => ({type: FOLLOW, userId})
 
 type UnFollowActionType = ReturnType<typeof unFollowAC>
-export const unFollowAC = (userId: number) => ( {type: UNFOLLOW, userId} )
+export const unFollowAC = (userId: number) => ({type: UNFOLLOW, userId})
 
 type SetUsersActionType = ReturnType<typeof setUsersAC>
-export const setUsersAC = (users: UserType[]) => ( {type: SET_USERS, users} )
+export const setUsersAC = (users: UserType[]) => ({type: SET_USERS, users})
 
 type SetCurrentPageActionType = ReturnType<typeof setCurrentPageAC>
-export const setCurrentPageAC = (currentPage: number) => ( {type: SET_CURRENT_PAGE, currentPage} )
+export const setCurrentPageAC = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage})
 
 type SetTotalUsersCountActionType = ReturnType<typeof setTotalUsersCountAC>
-export const setTotalUsersCountAC = (totalUsersCount: number) => ( {type: SET_TOTAL_USERS_COUNT, totalUsersCount} )
+export const setTotalUsersCountAC = (totalUsersCount: number) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
+
+type ToggleIsFetchingActionType = ReturnType<typeof toggleIsFetchingAC>
+export const toggleIsFetchingAC = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
