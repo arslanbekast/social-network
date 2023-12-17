@@ -3,6 +3,7 @@ import {UserType} from "../../redux/users-reducer";
 import s from './Users.module.css'
 import noPhoto from '../../assets/images/noPhoto.jpg'
 import {NavLink} from "react-router-dom";
+import axios from "axios";
 
 type UsersPropsType = {
     users: UserType[]
@@ -11,9 +12,6 @@ type UsersPropsType = {
     currentPage: number
     follow: (userId: number) => void
     unFollow: (userId: number) => void
-    // setUsers: (users: UserType[]) => void
-    // setCurrentPage: (page: number) => void
-    // setTotalUsersCount: (totalUsersCount: number) => void
     onPageChanged: (pageNumber: number) => void
 }
 
@@ -23,6 +21,28 @@ export const Users: FC<UsersPropsType> = (props) => {
     let pages = []
     for (let i=1; i<=pagesCount; i++) {
         pages.push(i)
+    }
+
+    const follow = (userId: number) => {
+        axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {}, {withCredentials: true})
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    props.follow(userId)
+                }
+
+            })
+
+    }
+
+    const unFollow = (userId: number) => {
+        axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${userId}`, {withCredentials: true})
+            .then(response => {
+                if (response.data.resultCode === 0) {
+                    props.unFollow(userId)
+                }
+
+            })
+
     }
 
     return (
@@ -48,8 +68,8 @@ export const Users: FC<UsersPropsType> = (props) => {
                                 </div>
                                 <div>
                                     {u.followed
-                                        ? <button onClick={() => props.unFollow(u.id)}>Unfollow</button>
-                                        : <button onClick={() => props.follow(u.id)}>Follow</button>}
+                                        ? <button onClick={() => unFollow(u.id)}>Unfollow</button>
+                                        : <button onClick={() => follow(u.id)}>Follow</button>}
                                 </div>
                             </div>
                             <div>
