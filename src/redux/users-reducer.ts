@@ -54,17 +54,11 @@ export const usersReducer = (state: UsersStateType = initialState, action: Users
 
 // action creators
 export const followSuccess = (userId: number) => ({type: FOLLOW, userId})
-
 export const unFollowSuccess = (userId: number) => ({type: UNFOLLOW, userId})
-
 export const setUsers = (users: UserType[]) => ({type: SET_USERS, users})
-
 export const setCurrentPage = (currentPage: number) => ({type: SET_CURRENT_PAGE, currentPage})
-
 export const setTotalUsersCount = (totalUsersCount: number) => ({type: SET_TOTAL_USERS_COUNT, totalUsersCount})
-
 export const toggleIsFetching = (isFetching: boolean) => ({type: TOGGLE_IS_FETCHING, isFetching})
-
 export const toggleFollowingInProgress = (isFollowing: boolean, userId: number) => ({type: TOGGLE_FOLLOWING_IN_PROGRESS, isFollowing, userId})
 
 // thunks
