@@ -11,11 +11,11 @@ export const usersAPI = {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`)
             .then(response => response.data)
     },
-    createFollow(userId: number) {
+    follow(userId: number) {
         return instance.post(`follow/${userId}`)
             .then(response => response.data)
     },
-    deleteFollow(userId: number) {
+    unFollow(userId: number) {
         return instance.delete(`follow/${userId}`)
             .then(response => response.data)
     },

@@ -14,7 +14,7 @@ type UsersPropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
     onPageChanged: (pageNumber: number) => void
-    toggleFollowingInProgress: (isFollowing: boolean, userId: number) => void
+    // toggleFollowingInProgress: (isFollowing: boolean, userId: number) => void
     followingInProgress: Array<number>
 }
 
@@ -26,36 +26,17 @@ export const Users: FC<UsersPropsType> = (props) => {
         pages.push(i)
     }
 
-    const follow = (userId: number) => {
-        props.toggleFollowingInProgress(true, userId)
-        usersAPI.createFollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    props.follow(userId)
-                    props.toggleFollowingInProgress(false, userId)
-                }
-            })
 
-    }
+    const follow = (userId: number) => props.follow(userId)
 
-    const unFollow = (userId: number) => {
-        props.toggleFollowingInProgress(true, userId)
-        usersAPI.deleteFollow(userId)
-            .then(data => {
-                if (data.resultCode === 0) {
-                    props.unFollow(userId)
-                    props.toggleFollowingInProgress(false, userId)
-                }
-            })
-
-    }
+    const unFollow = (userId: number) => props.unFollow(userId)
 
     return (
         <div className={s.usersContent}>
             <div className={s.pagesBox}>
                 {
                     pages.map(p => {
-                       return <span style={{cursor: 'pointer'}} className={props.currentPage === p ? s.selectedPage : ''}
+                       return <span key={p} style={{cursor: 'pointer'}} className={props.currentPage === p ? s.selectedPage : ''}
                                     onClick={() => props.onPageChanged(p)}>{p}</span>
                     })
                 }
