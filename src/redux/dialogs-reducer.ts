@@ -1,7 +1,5 @@
 import {DialogsPageType} from "./store";
 
-export type DialogsActionsType = UpdateNewMessageTextActionType | SendMessageActionType
-
 const UPDATE_NEW_MESSAGE_TEXT = 'UPDATE-NEW-MESSAGE-TEXT' as const
 const SEND_MESSAGE = 'SEND-MESSAGE' as const
 
@@ -41,8 +39,11 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Di
 
 }
 
-type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextAC>
+//action creators
 export const updateNewMessageTextAC = (text: string) => ({type: UPDATE_NEW_MESSAGE_TEXT, messageText: text})
-
-type SendMessageActionType = ReturnType<typeof sendMessageAC>
 export const sendMessageAC = () => ({type: SEND_MESSAGE})
+
+//types
+type UpdateNewMessageTextActionType = ReturnType<typeof updateNewMessageTextAC>
+type SendMessageActionType = ReturnType<typeof sendMessageAC>
+export type DialogsActionsType = UpdateNewMessageTextActionType | SendMessageActionType
