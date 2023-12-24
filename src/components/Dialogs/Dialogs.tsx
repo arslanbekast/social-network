@@ -9,6 +9,7 @@ import {
     MessageType
 } from "../../redux/store";
 import {sendMessageAC, updateNewMessageTextAC} from "../../redux/dialogs-reducer";
+import {Redirect} from "react-router-dom";
 
 type DialogsPropsType = {
     updateNewMessageText: (text: string) => void
