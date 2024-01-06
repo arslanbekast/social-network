@@ -13,7 +13,6 @@ type DialogsPropsType = {
 export const Dialogs: FC<DialogsPropsType> = ({sendMessage, dialogsPage}) => {
 
     const addNewMessage = (values: FormDataType) => {
-        console.log(values)
         sendMessage(values.newMessageText);
     }
 

@@ -20,7 +20,6 @@ export type DialogType = {
 
 export type ProfilePageType = {
     posts: PostType[]
-    newPostText: string
     profile: ProfileType | null
     status: string
 
