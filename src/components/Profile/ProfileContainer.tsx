@@ -1,20 +1,17 @@
 import React, {Component} from 'react';
 import {Profile} from "./Profile";
-import axios from "axios";
 import {connect} from "react-redux";
 import {StateType} from "../../redux/redux-store";
 import {getStatus, getUserProfile, ProfileType, updateStatus} from "../../redux/profile-reducer";
-import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
-import {usersAPI} from "../../api/api";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
-import {Dialogs} from "../Dialogs/Dialogs";
-
 
 
 type MapStatePropsType = {
     profile: ProfileType | null
     status: string
+    authorizedUserId: number | null
+    isAuth: boolean
 }
 
 type MapDispatchPropsType = {
@@ -36,7 +33,7 @@ class ProfileContainer extends Component<PropsType>{
     componentDidMount() {
         let userId = this.props.match.params.userId
         if (!userId) {
-            userId = '30283'
+            userId = this.props.authorizedUserId ? String(this.props.authorizedUserId) : "2"
         }
 
         this.props.getUserProfile(Number(userId))
@@ -54,11 +51,13 @@ class ProfileContainer extends Component<PropsType>{
 
 const mapStateToProps = (state: StateType): MapStatePropsType => ({
     profile: state.profilePage.profile,
-    status: state.profilePage.status
+    status: state.profilePage.status,
+    authorizedUserId: state.auth.userId,
+    isAuth: state.auth.isAuth
 })
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps, {getUserProfile, getStatus, updateStatus}),
     withRouter,
-    withAuthRedirect
+    // withAuthRedirect
 )(ProfileContainer)
