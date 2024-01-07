@@ -6,6 +6,7 @@ import {connect} from "react-redux";
 import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {StateType} from "../../redux/redux-store";
+import style from '../common/FormsControls/FormsControls.module.css'
 
 type LoginPropsType = {
     isAuth: boolean
@@ -44,10 +45,16 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
                 <div>
                     <Field type="password" name="password" placeholder="Password" component={Input} validate={[required]}/>
                 </div>
-                <div>
+                <div style={{display: "flex", alignItems: "center"}}>
                     <Field type="checkbox" name="rememberMe" id="rememberMe" component={Input}/>
                     <label htmlFor="rememberMe">Remember me</label>
                 </div>
+                {
+                    props.error && <div className={style.formSummaryError}>
+                        {props.error}
+                    </div>
+                }
+
                 <div>
                     <button>Login</button>
                 </div>

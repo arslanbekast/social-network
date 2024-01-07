@@ -10,3 +10,10 @@
     color: red;
     font-weight: bold;
 }
+
+.formSummaryError {
+    width: fit-content;
+    border: 2px solid red;
+    padding: 5px;
+    color: #ff0000;
+}
