@@ -1,4 +1,4 @@
-import {Dispatch} from "redux";
+import {AnyAction, Dispatch} from "redux";
 import {authAPI} from "../api/api";
 
 const SET_USER_DATA = 'SET-USER-DATA' as const
@@ -20,8 +20,7 @@ export const authReducer = (state: AuthReducerStateType = initialState, action: 
         case SET_USER_DATA:
             return {
                 ...state,
-                ...action.data,
-                isAuth: true
+                ...action.payload
             }
         default:
             return state
@@ -30,7 +29,8 @@ export const authReducer = (state: AuthReducerStateType = initialState, action: 
 }
 
 // action creators
-export const setAuthUserData = (userId: number, email: string, login: string) => ({type: SET_USER_DATA, data: {userId, email, login}})
+export const setAuthUserData = (userId: number | null, email: string | null, login: string | null, isAuth: boolean) =>
+    ({type: SET_USER_DATA, payload: {userId, email, login, isAuth}})
 
 // thunks
 export const getAuthUserData = () => (dispatch: Dispatch) => {
@@ -38,7 +38,25 @@ export const getAuthUserData = () => (dispatch: Dispatch) => {
         .then(data => {
             if (data.resultCode === 0) {
                 const {id, login, email} = data.data
-                dispatch(setAuthUserData(id, email, login))
+                dispatch(setAuthUserData(id, email, login, true))
+            }
+        })
+}
+
+export const login = (email: string, password: string, rememberMe: boolean) => (dispatch: any) => {
+    authAPI.login(email, password, rememberMe)
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(getAuthUserData())
+            }
+        })
+}
+
+export const logout = () => (dispatch: any) => {
+    authAPI.logout()
+        .then(data => {
+            if (data.resultCode === 0) {
+                dispatch(setAuthUserData(null, null, null, false))
             }
         })
 }

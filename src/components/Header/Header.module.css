@@ -16,3 +16,8 @@
     color: white;
     font-weight: 500;
 }
+.userNameBlock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}

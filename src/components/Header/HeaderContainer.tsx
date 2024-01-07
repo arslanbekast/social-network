@@ -1,14 +1,8 @@
-import React, {Component, FC} from 'react';
-import logo from "../../assets/images/logo.png";
-import s from './Header.module.css'
-import {NavLink} from "react-router-dom";
+import React, {Component} from 'react';
 import {Header} from "./Header";
-import {ProfileType} from "../../redux/profile-reducer";
 import {connect} from "react-redux";
-import axios from "axios";
 import {StateType} from "../../redux/redux-store";
-import {getAuthUserData, setAuthUserData} from "../../redux/auth-reducer";
-import {authAPI} from "../../api/api";
+import {getAuthUserData, logout} from "../../redux/auth-reducer";
 
 type MapStatePropsType = {
     isAuth: boolean
@@ -17,6 +11,7 @@ type MapStatePropsType = {
 
 type MapDispatchPropsType = {
     getAuthUserData: () => void
+    logout: () => void
 }
 
 type HeaderContainerPropsType = MapStatePropsType & MapDispatchPropsType
@@ -42,4 +37,4 @@ const mapStateToProps = (state: StateType): MapStatePropsType => ({
 
 })
 
-export default connect(mapStateToProps, {getAuthUserData})(HeaderContainer)
+export default connect(mapStateToProps, {getAuthUserData, logout})(HeaderContainer)

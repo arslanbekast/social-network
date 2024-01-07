@@ -7,6 +7,7 @@ type HeaderPropsType = {
     isAuth: boolean
     login: string | null
     getAuthUserData: () => void
+    logout: () => void
 }
 
 export const Header: FC<HeaderPropsType> = (props) => {
@@ -17,7 +18,10 @@ export const Header: FC<HeaderPropsType> = (props) => {
             <div className={s.loginBlock}>
                 {
                     props.isAuth
-                        ? <div>{props.login}</div>
+                        ? <div className={s.userNameBlock}>
+                            {props.login}
+                            <button onClick={props.logout}>Logout</button>
+                        </div>
                         : <NavLink to="/login">Login</NavLink>
                 }
 
