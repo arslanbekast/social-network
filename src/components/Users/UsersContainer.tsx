@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from "react-redux";
 import {StateType} from "../../redux/redux-store";
-import {follow, getUsers,setCurrentPage, toggleFollowingInProgress,unFollow,UserType} from "../../redux/users-reducer";
+import {follow, getUsers, setCurrentPage, unFollow, UserType} from "../../redux/users-reducer";
 import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
-import {withAuthRedirect} from "../../hoc/withAuthRedirect";
 import {compose} from "redux";
 
 
@@ -99,5 +98,5 @@ const mapStateToProps = (state: StateType) => {
 
 export default compose<React.ComponentType>(
     connect(mapStateToProps,{follow,unFollow,setCurrentPage,getUsers}),
-    withAuthRedirect
+    // withAuthRedirect
 )(UsersContainer)
