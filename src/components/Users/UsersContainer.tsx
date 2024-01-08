@@ -6,23 +6,22 @@ import {Users} from "./Users";
 import {Preloader} from "../common/Preloader/Preloader";
 import {compose} from "redux";
 
-
-type UsersContainerPropsType = {
+type MapStatePropsType = {
     users: UserType[]
     pageSize: number
     totalUsersCount: number
     currentPage: number
     isFetching: boolean
     followingInProgress: Array<number>
+}
+type MapDispatchPropsType = {
     follow: (userId: number) => void
     unFollow: (userId: number) => void
-    // setUsers: (users: UserType[]) => void
     setCurrentPage: (page: number) => void
-    // setTotalUsersCount: (totalUsersCount: number) => void
-    // toggleIsFetching: (isFetching: boolean) => void
-    // toggleFollowingInProgress: (isFollowing: boolean, userId: number) => void
     getUsers: (currentPage: number, pageSize: number) => void
 }
+
+type UsersContainerPropsType = MapStatePropsType & MapDispatchPropsType
 
 class UsersContainer extends React.Component<UsersContainerPropsType> {
 
