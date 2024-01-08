@@ -7,10 +7,14 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../../components/common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 
-type DialogsPropsType = {
-    sendMessage: (newMessageText: string) => void
+type MapStatePropsType = {
     dialogsPage: DialogsPageType
 }
+type MapDispatchPropsType = {
+    sendMessage: (newMessageText: string) => void
+}
+
+type DialogsPropsType = MapStatePropsType & MapDispatchPropsType
 
 export const Dialogs: FC<DialogsPropsType> = ({sendMessage, dialogsPage}) => {
 
