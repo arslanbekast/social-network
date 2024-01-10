@@ -12,8 +12,8 @@ type MyPostsPropsType = {
 }
 
 
-
-export const MyPosts: FC<MyPostsPropsType> = ({posts, addPost}) => {
+export const MyPosts = React.memo((props: MyPostsPropsType) => {
+    let {posts, addPost} = props;
     const onAddPost = (values: FormDataType) => {
         addPost(values.newPostText)
     }
@@ -29,7 +29,7 @@ export const MyPosts: FC<MyPostsPropsType> = ({posts, addPost}) => {
             </div>
         </div>
     );
-};
+})
 
 type FormDataType = {
     newPostText: string
