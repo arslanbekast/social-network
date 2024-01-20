@@ -10,17 +10,17 @@ type HeaderPropsType = {
     logout: () => void
 }
 
-export const Header: FC<HeaderPropsType> = (props) => {
+export const Header: FC<HeaderPropsType> = ({isAuth, login, logout}) => {
     return (
         <header className={s.header}>
             <img src={logo} alt=""/>
 
             <div className={s.loginBlock}>
                 {
-                    props.isAuth
+                    isAuth
                         ? <div className={s.userNameBlock}>
-                            {props.login}
-                            <button onClick={props.logout}>Logout</button>
+                            {login}
+                            <button onClick={logout}>Logout</button>
                         </div>
                         : <NavLink to="/login">Login</NavLink>
                 }
