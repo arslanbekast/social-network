@@ -3,7 +3,7 @@ import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {StateType} from "../../redux/redux-store";
 import {getStatus, getUserProfile, ProfileType, updateStatus} from "../../redux/profile-reducer";
-import {Redirect, RouteComponentProps, withRouter} from "react-router-dom";
+import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
 
 
@@ -25,8 +25,6 @@ type PathParamsType = {
 }
 type ProfileContainerPropsType = MapStatePropsType & MapDispatchPropsType
 type PropsType = RouteComponentProps<PathParamsType> & ProfileContainerPropsType
-
-
 
 class ProfileContainer extends Component<PropsType>{
 
