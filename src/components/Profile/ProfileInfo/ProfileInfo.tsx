@@ -4,7 +4,6 @@ import mainImg from "../../../assets/images/main-image.jpg";
 import {Preloader} from "../../common/Preloader/Preloader";
 import noPhoto from '../../../assets/images/noPhoto.jpg'
 import {ProfileType} from "../../../redux/profile-reducer";
-import {ProfileStatus} from "./ProfileStatus";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 
 type ProfileInfoPropsType = {
@@ -13,8 +12,8 @@ type ProfileInfoPropsType = {
     updateStatus: (status: string) => void
 }
 
-export const ProfileInfo: FC<ProfileInfoPropsType> = (props) => {
-    if (!props.profile) {
+export const ProfileInfo: FC<ProfileInfoPropsType> = ({profile, status, updateStatus}) => {
+    if (!profile) {
         return <Preloader />
     }
     return (
@@ -24,10 +23,10 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = (props) => {
             </div>
 
             <div className={s.descBlock}>
-                <img className={s.userPhoto} src={props.profile.photos.large ? props.profile.photos.large : noPhoto} alt="user image"/>
+                <img className={s.userPhoto} src={profile.photos.large ? profile.photos.large : noPhoto} alt="user image"/>
                 <div>
-                    <span>{props.profile.aboutMe}</span>
-                    <ProfileStatusWithHooks status={props.status} updateStatus={props.updateStatus}/>
+                    <span>{profile.aboutMe}</span>
+                    <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 </div>
             </div>
         </div>
