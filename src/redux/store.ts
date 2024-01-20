@@ -1,6 +1,4 @@
-import {profileReducer, ProfileType} from "./profile-reducer";
-import {dialogsReducer} from "./dialogs-reducer";
-import {sidebarReducer} from "./sidebar-reducer";
+import {ProfileType} from "./profile-reducer";
 
 export type PostType = {
     id: number

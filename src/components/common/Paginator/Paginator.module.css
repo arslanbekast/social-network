@@ -1,0 +1,9 @@
+.pagesBox {
+    max-width: 500px;
+    overflow-x: scroll;
+    display: flex;
+    gap: 10px;
+}
+.selectedPage {
+    font-weight: bold;
+}
