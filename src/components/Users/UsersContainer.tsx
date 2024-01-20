@@ -10,7 +10,8 @@ import {
     getFollowingInProgress,
     getIsFetching,
     getPageSize,
-    getTotalUsersCount, getUsers, getUsersSuperSelector
+    getTotalUsersCount,
+    getUsersSuperSelector
 } from '../../redux/users-selectors'
 
 type MapStatePropsType = {
@@ -33,15 +34,16 @@ type UsersContainerPropsType = MapStatePropsType & MapDispatchPropsType
 class UsersContainer extends React.Component<UsersContainerPropsType> {
 
     componentDidMount() {
-        this.props.requestUsers(this.props.currentPage, this.props.pageSize)
+        const {currentPage, pageSize} = this.props
+        this.props.requestUsers(currentPage, pageSize)
     }
 
     onPageChanged = (pageNumber: number) => {
-        this.props.requestUsers(pageNumber, this.props.pageSize)
+        const {pageSize} = this.props
+        this.props.requestUsers(pageNumber, pageSize)
     }
 
     render() {
-
         return <>
             {
                 this.props.isFetching
