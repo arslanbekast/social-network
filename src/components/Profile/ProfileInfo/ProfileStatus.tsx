@@ -45,8 +45,6 @@ export class ProfileStatus extends React.Component<ProfileStatusPropsType> {
                                    onBlur={this.deActivateEditMode} value={this.state.status}/>
                         </div>
                 }
-
-
             </div>
         );
     }
