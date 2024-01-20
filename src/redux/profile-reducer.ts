@@ -1,4 +1,3 @@
-import {PostType} from "./store";
 import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../api/api";
 
@@ -86,6 +85,11 @@ export type ProfileType = {
     lookingForAJobDescription: string
     photos: PhotosType
     userId: number
+}
+export type PostType = {
+    id: number
+    message: string
+    likesCount: number
 }
 export type ProfilePageType = {
     posts: PostType[]

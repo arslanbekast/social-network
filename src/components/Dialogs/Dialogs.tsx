@@ -2,11 +2,22 @@ import React, {FC} from 'react';
 import s from './Dialogs.module.css';
 import {DialogItem} from "./DialogItem/DialogItem";
 import {Message} from "./Message/Message";
-import {DialogsPageType} from "../../redux/store";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Textarea} from "../../components/common/FormsControls/FormsControls";
 import {maxLengthCreator, required} from "../../utils/validators/validators";
 
+export type MessageType = {
+    id: number
+    message: string
+}
+export type DialogType = {
+    id: number
+    name: string
+}
+export type DialogsPageType = {
+    dialogs: DialogType[]
+    messages: MessageType[]
+}
 type MapStatePropsType = {
     dialogsPage: DialogsPageType
 }

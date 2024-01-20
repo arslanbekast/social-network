@@ -1,17 +1,15 @@
 import React, {FC} from 'react';
 import s from './MyPosts.module.css'
 import {Post} from "./Post/Post";
-import {PostType} from "../../../redux/store";
 import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {maxLengthCreator, required} from "../../../utils/validators/validators";
 import {Textarea} from "../../../components/common/FormsControls/FormsControls";
+import {PostType} from "../../../redux/profile-reducer";
 
 type MyPostsPropsType = {
     posts: PostType[]
     addPost: (newPostText: string) => void
 }
-
-
 export const MyPosts = React.memo((props: MyPostsPropsType) => {
     let {posts, addPost} = props;
     const onAddPost = (values: FormDataType) => {

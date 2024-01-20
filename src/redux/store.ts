@@ -1,55 +1,55 @@
-import {ProfileType} from "./profile-reducer";
-
-export type PostType = {
-    id: number
-    message: string
-    likesCount: number
-}
-
-export type MessageType = {
-    id: number
-    message: string
-}
-
-export type DialogType = {
-    id: number
-    name: string
-}
-
-export type ProfilePageType = {
-    posts: PostType[]
-    profile: ProfileType | null
-    status: string
-
-}
-export type DialogsPageType = {
-    dialogs: DialogType[]
-    messages: MessageType[]
-}
-export type SideBarType = any
-export type StateType = {
-    profilePage: ProfilePageType
-    dialogsPage: DialogsPageType
-    sidebar: SideBarType
-}
-type AddPostActionType = {
-    type: 'ADD-POST'
-}
-type UpdateNewPostTextActionType = {
-    type: 'UPDATE-NEW-POST-TEXT'
-    newText: string
-}
-type UpdateNewMessageTextActionType = {
-    type: 'UPDATE-NEW-MESSAGE-TEXT'
-    messageText: string
-}
-type SendMessageActionType = {
-    type: 'SEND-MESSAGE'
-}
-export type ActionsType = AddPostActionType
-    | UpdateNewPostTextActionType
-    | UpdateNewMessageTextActionType
-    | SendMessageActionType
+// import {ProfileType} from "./profile-reducer";
+//
+// export type PostType = {
+//     id: number
+//     message: string
+//     likesCount: number
+// }
+//
+// export type MessageType = {
+//     id: number
+//     message: string
+// }
+//
+// export type DialogType = {
+//     id: number
+//     name: string
+// }
+//
+// export type ProfilePageType = {
+//     posts: PostType[]
+//     profile: ProfileType | null
+//     status: string
+//
+// }
+// export type DialogsPageType = {
+//     dialogs: DialogType[]
+//     messages: MessageType[]
+// }
+// export type SideBarType = any
+// export type StateType = {
+//     profilePage: ProfilePageType
+//     dialogsPage: DialogsPageType
+//     sidebar: SideBarType
+// }
+// type AddPostActionType = {
+//     type: 'ADD-POST'
+// }
+// type UpdateNewPostTextActionType = {
+//     type: 'UPDATE-NEW-POST-TEXT'
+//     newText: string
+// }
+// type UpdateNewMessageTextActionType = {
+//     type: 'UPDATE-NEW-MESSAGE-TEXT'
+//     messageText: string
+// }
+// type SendMessageActionType = {
+//     type: 'SEND-MESSAGE'
+// }
+// export type ActionsType = AddPostActionType
+//     | UpdateNewPostTextActionType
+//     | UpdateNewMessageTextActionType
+//     | SendMessageActionType
 
 // export const store = {
 //     _state: {
@@ -106,7 +106,6 @@ export type ActionsType = AddPostActionType
 
 // @ts-ignore
 window.store = store;
-
 
 
 
