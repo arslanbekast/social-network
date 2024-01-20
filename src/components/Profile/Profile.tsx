@@ -9,10 +9,10 @@ type ProfilePropsType = {
     updateStatus: (status: string) => void
 }
 
-export const Profile: FC<ProfilePropsType> = (props) => {
+export const Profile: FC<ProfilePropsType> = ({profile, status, updateStatus}) => {
     return (
         <div>
-            <ProfileInfo profile={props.profile} status={props.status} updateStatus={props.updateStatus}/>
+            <ProfileInfo profile={profile} status={status} updateStatus={updateStatus}/>
             <MyPostsContainer />
         </div>
     );
