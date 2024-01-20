@@ -1,7 +1,8 @@
-import {DialogsPageType} from "./store";
 
+//action types
 const SEND_MESSAGE = 'SEND-MESSAGE' as const
 
+// initial state
 const initialState = {
     dialogs: [
         {id: 1, name: 'Dimych'},
@@ -20,6 +21,7 @@ const initialState = {
     ]
 }
 
+// reducer
 export const dialogsReducer = (state: DialogsPageType = initialState, action: DialogsActionsType): DialogsPageType => {
 
     switch (action.type) {
@@ -39,5 +41,18 @@ export const dialogsReducer = (state: DialogsPageType = initialState, action: Di
 export const sendMessageAC = (newMessageText: string) => ({type: SEND_MESSAGE, newMessageText} as const)
 
 //types
+export type DialogType = {
+    id: number
+    name: string
+}
+export type MessageType = {
+    id: number
+    message: string
+}
+export type DialogsPageType = {
+    dialogs: DialogType[]
+    messages: MessageType[]
+}
+
 type SendMessageActionType = ReturnType<typeof sendMessageAC>
 export type DialogsActionsType =  SendMessageActionType
