@@ -12,12 +12,12 @@ type LoginPropsType = {
     isAuth: boolean
     login: (email: string, password: string, rememberMe: boolean) => void
 }
-const Login: FC<LoginPropsType> = (props: LoginPropsType) => {
+const Login: FC<LoginPropsType> = ({isAuth, login}) => {
     const onSubmit = (formData: FormDataType) => {
-        props.login(formData.email, formData.password, formData.rememberMe)
+        login(formData.email, formData.password, formData.rememberMe)
     }
 
-    if (props.isAuth) {
+    if (isAuth) {
         return <Redirect to="/profile" />
     }
 
@@ -35,10 +35,10 @@ type FormDataType = {
     rememberMe: boolean
 }
 
-const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
+const LoginForm: FC<InjectedFormProps<FormDataType>> = ({handleSubmit, error}) => {
 
     return (
-            <form onSubmit={props.handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <Field name="email" placeholder="Email" component={Input} validate={[required]}/>
                 </div>
@@ -50,8 +50,8 @@ const LoginForm: FC<InjectedFormProps<FormDataType>> = (props) => {
                     <label htmlFor="rememberMe">Remember me</label>
                 </div>
                 {
-                    props.error && <div className={style.formSummaryError}>
-                        {props.error}
+                    error && <div className={style.formSummaryError}>
+                        {error}
                     </div>
                 }
 
