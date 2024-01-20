@@ -1,8 +1,13 @@
 .pagesBox {
-    max-width: 500px;
-    overflow-x: scroll;
     display: flex;
+    justify-content: center;
+    align-items: center;
     gap: 10px;
+    margin-bottom: 20px;
+}
+.pageNumber {
+    padding: 2px;
+    border: 1px solid grey;
 }
 .selectedPage {
     font-weight: bold;
