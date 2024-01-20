@@ -7,13 +7,13 @@ type PostPropsType = {
     likesCount: number
 }
 
-export const Post: FC<PostPropsType> = (props) => {
+export const Post: FC<PostPropsType> = ({message, likesCount}) => {
     return (
         <div className={s.item}>
             <img src={noPhoto} alt=""/>
-            {props.message}
+            {message}
             <div>
-                <button>Like </button> {props.likesCount}
+                <button>Like </button> {likesCount}
             </div>
         </div>
     );
