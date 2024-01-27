@@ -1,0 +1,29 @@
+{
+  "files": {
+    "main.css": "/arslanbekast.github.io/social-network/static/css/main.71b6976d.css",
+    "main.js": "/arslanbekast.github.io/social-network/static/js/main.4e5a6775.js",
+    "static/css/677.dc400f38.chunk.css": "/arslanbekast.github.io/social-network/static/css/677.dc400f38.chunk.css",
+    "static/js/677.e19269cb.chunk.js": "/arslanbekast.github.io/social-network/static/js/677.e19269cb.chunk.js",
+    "static/css/528.6e5e5632.chunk.css": "/arslanbekast.github.io/social-network/static/css/528.6e5e5632.chunk.css",
+    "static/js/528.b15bee31.chunk.js": "/arslanbekast.github.io/social-network/static/js/528.b15bee31.chunk.js",
+    "static/css/944.b4bc5d44.chunk.css": "/arslanbekast.github.io/social-network/static/css/944.b4bc5d44.chunk.css",
+    "static/js/944.a69af257.chunk.js": "/arslanbekast.github.io/social-network/static/js/944.a69af257.chunk.js",
+    "static/js/615.ef1cfbca.chunk.js": "/arslanbekast.github.io/social-network/static/js/615.ef1cfbca.chunk.js",
+    "static/media/main-image.jpg": "/arslanbekast.github.io/social-network/static/media/main-image.946b1f91186f5da00daf.jpg",
+    "static/media/logo.png": "/arslanbekast.github.io/social-network/static/media/logo.b4647e04462e851107de.png",
+    "index.html": "/arslanbekast.github.io/social-network/index.html",
+    "main.71b6976d.css.map": "/arslanbekast.github.io/social-network/static/css/main.71b6976d.css.map",
+    "main.4e5a6775.js.map": "/arslanbekast.github.io/social-network/static/js/main.4e5a6775.js.map",
+    "677.dc400f38.chunk.css.map": "/arslanbekast.github.io/social-network/static/css/677.dc400f38.chunk.css.map",
+    "677.e19269cb.chunk.js.map": "/arslanbekast.github.io/social-network/static/js/677.e19269cb.chunk.js.map",
+    "528.6e5e5632.chunk.css.map": "/arslanbekast.github.io/social-network/static/css/528.6e5e5632.chunk.css.map",
+    "528.b15bee31.chunk.js.map": "/arslanbekast.github.io/social-network/static/js/528.b15bee31.chunk.js.map",
+    "944.b4bc5d44.chunk.css.map": "/arslanbekast.github.io/social-network/static/css/944.b4bc5d44.chunk.css.map",
+    "944.a69af257.chunk.js.map": "/arslanbekast.github.io/social-network/static/js/944.a69af257.chunk.js.map",
+    "615.ef1cfbca.chunk.js.map": "/arslanbekast.github.io/social-network/static/js/615.ef1cfbca.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.71b6976d.css",
+    "static/js/main.4e5a6775.js"
+  ]
+}
