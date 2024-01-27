@@ -6,6 +6,7 @@ const ADD_POST = 'profile/ADD-POST' as const
 const DELETE_POST = 'profile/DELETE-POST' as const
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE' as const
 const SET_STATUS = 'profile/SET-STATUS' as const
+const SAVE_PHOTO_SUCCESS = 'profile/SAVE-PHOTO-SUCCESS' as const
 
 // initial state
 const initialState = {
@@ -32,6 +33,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             return {...state, profile: action.profile}
         case SET_STATUS:
             return {...state, status: action.status}
+        case SAVE_PHOTO_SUCCESS:
+            return {...state, profile: {...state.profile, photos: action.photos}}
         default:
             return state
     }
@@ -43,6 +46,8 @@ export const addPostAC = (newPostText: string) => ({type: ADD_POST, newPostText}
 export const deletePostAC = (postId: number) => ({type: DELETE_POST, postId})
 export const setUserProfile = (profile: ProfileType) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status: string) => ({type: SET_STATUS, status})
+
+export const savePhotoSuccess = (photos: PhotosType) => ({type: SAVE_PHOTO_SUCCESS, photos})
 
 // thunks
 export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
@@ -62,6 +67,13 @@ export const updateStatus = (status: string) => async (dispatch: Dispatch) => {
     }
 }
 
+export const savePhoto = (file: File) => async (dispatch: Dispatch) => {
+    const data = await profileAPI.savePhoto(file)
+    if (data.resultCode === 0) {
+        dispatch(savePhotoSuccess(data.data.photos))
+    }
+}
+
 // types
 type ContactsType = {
     facebook: string
@@ -78,13 +90,13 @@ type PhotosType = {
     large: string
 }
 export type ProfileType = {
-    aboutMe: string
-    contacts: ContactsType
-    fullName: string
-    lookingForAJob: boolean
-    lookingForAJobDescription: string
+    aboutMe?: string | undefined
+    contacts?: ContactsType
+    fullName?: string | undefined
+    lookingForAJob?: boolean | undefined
+    lookingForAJobDescription?: string | undefined
     photos: PhotosType
-    userId: number
+    userId?: number | undefined
 }
 export type PostType = {
     id: number
@@ -101,3 +113,4 @@ export type ProfileActionsType = ReturnType<typeof addPostAC>
     | ReturnType<typeof deletePostAC>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatus>
+    | ReturnType<typeof savePhotoSuccess>
