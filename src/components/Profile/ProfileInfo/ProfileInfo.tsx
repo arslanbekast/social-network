@@ -23,7 +23,7 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({profile, status, updateSt
             </div>
 
             <div className={s.descBlock}>
-                <img className={s.userPhoto} src={profile.photos.large ? profile.photos.large : noPhoto} alt="user image"/>
+                <img className={s.userPhoto} src={profile.photos.large || noPhoto} alt="user image"/>
                 <div>
                     <span>{profile.aboutMe}</span>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
