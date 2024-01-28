@@ -1,5 +1,8 @@
 import {Dispatch} from "redux";
 import {profileAPI, usersAPI} from "../api/api";
+import {ProfileDataFormType} from "../components/Profile/ProfileInfo/ProfileDataForm/ProfileDataForm";
+import {StateType} from "./redux-store";
+import {stopSubmit} from "redux-form";
 
 // action types
 const ADD_POST = 'profile/ADD-POST' as const
@@ -71,6 +74,24 @@ export const savePhoto = (file: File) => async (dispatch: Dispatch) => {
     const data = await profileAPI.savePhoto(file)
     if (data.resultCode === 0) {
         dispatch(savePhotoSuccess(data.data.photos))
+    }
+}
+
+export const saveProfile = (profile: ProfileDataFormType) => async (dispatch: any, getState: () => StateType) => {
+    const userId = getState().auth.userId
+    const data = await profileAPI.saveProfile(profile)
+    if (data.resultCode === 0) {
+        dispatch(getUserProfile(Number(userId)))
+    } else {
+        const errorMessage = data.messages[0]
+        let wrongNetwork = data.messages[0]
+            .slice(
+                errorMessage.indexOf(">") + 1,
+                errorMessage.indexOf(")")
+            )
+            .toLocaleLowerCase();
+        dispatch(stopSubmit("edit-profile", {contacts: {[wrongNetwork]: errorMessage }}))
+        return Promise.reject(errorMessage)
     }
 }
 

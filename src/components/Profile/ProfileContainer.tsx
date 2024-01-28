@@ -2,9 +2,17 @@ import React, {Component} from 'react';
 import {Profile} from "./Profile";
 import {connect} from "react-redux";
 import {StateType} from "../../redux/redux-store";
-import {getStatus, getUserProfile, ProfileType, savePhoto, updateStatus} from "../../redux/profile-reducer";
+import {
+    getStatus,
+    getUserProfile,
+    ProfileType,
+    savePhoto,
+    saveProfile,
+    updateStatus
+} from "../../redux/profile-reducer";
 import {RouteComponentProps, withRouter} from "react-router-dom";
 import {compose} from "redux";
+import {ProfileDataFormType} from "./ProfileInfo/ProfileDataForm/ProfileDataForm";
 
 
 type MapStatePropsType = {
@@ -19,6 +27,7 @@ type MapDispatchPropsType = {
     getStatus: (userId: number) => void
     updateStatus: (status: string) => void
     savePhoto: (file: File) => void
+    saveProfile: (profile: ProfileDataFormType) => Promise<any>
 }
 
 type PathParamsType = {
@@ -27,7 +36,7 @@ type PathParamsType = {
 type ProfileContainerPropsType = MapStatePropsType & MapDispatchPropsType
 type PropsType = RouteComponentProps<PathParamsType> & ProfileContainerPropsType
 
-class ProfileContainer extends Component<PropsType>{
+class ProfileContainer extends Component<PropsType> {
 
     refreshProfile() {
         let userId = this.props.match.params.userId
@@ -58,7 +67,8 @@ class ProfileContainer extends Component<PropsType>{
                      profile={this.props.profile}
                      status={this.props.status}
                      updateStatus={this.props.updateStatus}
-                     savePhoto={this.props.savePhoto}/>
+                     savePhoto={this.props.savePhoto}
+                     saveProfile={this.props.saveProfile}/>
         );
     }
 
@@ -72,7 +82,7 @@ const mapStateToProps = (state: StateType): MapStatePropsType => ({
 })
 
 export default compose<React.ComponentType>(
-    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto}),
+    connect(mapStateToProps, {getUserProfile, getStatus, updateStatus, savePhoto, saveProfile}),
     withRouter,
     // withAuthRedirect
 )(ProfileContainer)
