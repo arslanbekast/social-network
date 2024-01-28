@@ -1,7 +1,7 @@
 import React, {Suspense} from 'react';
 import './App.css';
 import {Navbar} from "./components/Navbar/Navbar";
-import {BrowserRouter, HashRouter, Route, withRouter} from "react-router-dom";
+import {BrowserRouter, HashRouter, Redirect, Route, Switch, withRouter} from "react-router-dom";
 import {News} from "./components/News/News";
 import {Music} from "./components/Music/Music";
 import {Settings} from "./components/Settings/Settings";
@@ -27,13 +27,15 @@ type MapDispatchPropsType = {
     initializeApp: () => void
 }
 type AppPropsType = MapStatePropsType & MapDispatchPropsType
+
 class App extends React.Component<AppPropsType> {
 
     componentDidMount() {
         this.props.initializeApp()
     }
+
     render() {
-        if (!this.props.initialized) return <Preloader />
+        if (!this.props.initialized) return <Preloader/>
 
         return (
             <div className="app-wrapper">
@@ -41,13 +43,17 @@ class App extends React.Component<AppPropsType> {
                 <Navbar/>
                 <main className='main-wrapper'>
                     <Suspense fallback={<Preloader/>}>
-                        <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
-                        <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
-                        <Route path={'/users'} render={() => <UsersContainer/>}/>
-                        <Route path={'/login'} render={() => <Login/>}/>
-                        <Route path={'/news'} component={News}/>
-                        <Route path={'/music'} component={Music}/>
-                        <Route path={'/settings'} component={Settings}/>
+                        <Switch>
+                            <Route exact path={'/'} render={() => <Redirect to='/profile'/>}/>
+                            <Route path={'/profile/:userId?'} render={() => <ProfileContainer/>}/>
+                            <Route path={'/dialogs'} render={() => <DialogsContainer/>}/>
+                            <Route path={'/users'} render={() => <UsersContainer/>}/>
+                            <Route path={'/login'} render={() => <Login/>}/>
+                            <Route path={'/news'} component={News}/>
+                            <Route path={'/music'} component={Music}/>
+                            <Route path={'/settings'} component={Settings}/>
+                            <Route path={'*'} render={() => <div>404 NOT FOUNT</div>}/>
+                        </Switch>
                     </Suspense>
                 </main>
             </div>
@@ -66,7 +72,7 @@ const SocialNetworkApp = () => {
     return (
         <HashRouter>
             <Provider store={store}>
-                <AppContainer />
+                <AppContainer/>
             </Provider>
         </HashRouter>
     )
