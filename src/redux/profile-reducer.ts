@@ -12,14 +12,17 @@ const SET_STATUS = 'profile/SET-STATUS' as const
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE-PHOTO-SUCCESS' as const
 
 // initial state
-const initialState = {
+const initialState: ProfilePageType = {
         posts: [
             {id: 1, message: "Hi, how are you?", likesCount: 0},
             {id: 3, message: "It's my first post", likesCount: 25},
             {id: 4, message: "Blabla", likesCount: 13},
             {id: 5, message: "Dadad", likesCount: 22},
         ],
-        profile: null,
+        profile: {
+            contacts: {} as ContactsType,
+            photos: {} as PhotosType
+        },
         status: ''
     }
 
@@ -96,7 +99,7 @@ export const saveProfile = (profile: ProfileDataFormType) => async (dispatch: an
 }
 
 // types
-type ContactsType = {
+export type ContactsType = {
     facebook: string
     website: string | null
     vk: string
@@ -111,13 +114,13 @@ type PhotosType = {
     large: string
 }
 export type ProfileType = {
-    aboutMe?: string | undefined
-    contacts?: ContactsType
-    fullName?: string | undefined
-    lookingForAJob?: boolean | undefined
-    lookingForAJobDescription?: string | undefined
+    aboutMe?: string
+    contacts: ContactsType
+    fullName?: string
+    lookingForAJob?: boolean
+    lookingForAJobDescription?: string
     photos: PhotosType
-    userId?: number | undefined
+    userId?: number
 }
 export type PostType = {
     id: number
@@ -126,7 +129,7 @@ export type PostType = {
 }
 export type ProfilePageType = {
     posts: PostType[]
-    profile: ProfileType | null
+    profile: ProfileType
     status: string
 }
 
