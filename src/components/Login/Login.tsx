@@ -45,7 +45,7 @@ type FormDataType = {
     captcha: string
 }
 
-const LoginForm: FC<InjectedFormProps<FormDataType> & LoginFormProps> = ({handleSubmit, error, captchaUrl}) => {
+const LoginForm: FC<InjectedFormProps<FormDataType, LoginFormProps> & LoginFormProps> = ({handleSubmit, error, captchaUrl}) => {
 
     return (
             <form onSubmit={handleSubmit}>
@@ -74,7 +74,6 @@ const LoginForm: FC<InjectedFormProps<FormDataType> & LoginFormProps> = ({handle
     );
 };
 
-// @ts-ignore
 const LoginReduxForm = reduxForm<FormDataType, LoginFormProps>({form: 'login'})(LoginForm)
 
 const mapStateToProps = (state: StateType) => ({
