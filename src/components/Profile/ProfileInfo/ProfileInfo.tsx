@@ -3,9 +3,10 @@ import s from "./ProfileInfo.module.css";
 import mainImg from "../../../assets/images/main-image.jpg";
 import {Preloader} from "../../common/Preloader/Preloader";
 import noPhoto from '../../../assets/images/noPhoto.jpg'
-import {ProfileType} from "../../../redux/profile-reducer";
+import {ContactsType, ProfileType} from "../../../redux/profile-reducer";
 import {ProfileStatusWithHooks} from "./ProfileStatusWithHooks";
 import {ProfileDataFormType, ProfileDataReduxForm} from "./ProfileDataForm/ProfileDataForm";
+import {typeOptions} from "@testing-library/user-event/dist/type/typeImplementation";
 
 type ProfileInfoPropsType = {
     isOwner: boolean
@@ -16,12 +17,19 @@ type ProfileInfoPropsType = {
     saveProfile: (profile: ProfileDataFormType) => Promise<any>
 }
 
-export const ProfileInfo: FC<ProfileInfoPropsType> = ({isOwner, profile, status, updateStatus, savePhoto, saveProfile}) => {
+export const ProfileInfo: FC<ProfileInfoPropsType> = ({
+                                                          isOwner,
+                                                          profile,
+                                                          status,
+                                                          updateStatus,
+                                                          savePhoto,
+                                                          saveProfile
+                                                      }) => {
 
     const [editMode, setEditMode] = useState<boolean>(false)
 
     if (!profile) {
-        return <Preloader />
+        return <Preloader/>
     }
 
     const onMainPhotoSelected = (e: ChangeEvent<HTMLInputElement>) => {
@@ -31,7 +39,7 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({isOwner, profile, status,
     }
 
     const onSubmit = (formData: ProfileDataFormType) => {
-        saveProfile(formData).then(()=>{
+        saveProfile(formData).then(() => {
             setEditMode(false)
         })
     }
@@ -70,6 +78,9 @@ type ProfileDataProps = {
     goToEditMode: () => void
 }
 const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataProps) => {
+
+    const profileContacts = Object.keys(profile.contacts) as Array<keyof ContactsType>;
+
     return (
         <div>
             {isOwner && <button onClick={goToEditMode}>Edit</button>}
@@ -82,18 +93,14 @@ const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataProps) => {
             <div><strong>About me:</strong> {profile.aboutMe}</div>
             <div><strong>Contacts:</strong>
                 {
-                    profile.contacts &&
-                    Object.keys(profile.contacts).map(key => {
-                        // @ts-ignore
-                        return <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key]}/>
-
+                    profileContacts.map((key) => {
+                        return <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key] }/>
                     })
                 }
             </div>
         </div>
     )
 }
-
 
 
 type ContactsProps = {
