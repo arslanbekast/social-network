@@ -14,7 +14,7 @@ export type ProfileDataFormType = {
     lookingForAJobDescription: string
     aboutMe: string
 }
-const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormType> & Props> = ({handleSubmit, error, profile}) => {
+const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormType, Props> & Props> = ({handleSubmit, error, profile}) => {
 
     return (
         <form onSubmit={handleSubmit}>
@@ -60,5 +60,5 @@ const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormType> & Props> = ({ha
     )
 }
 
-// @ts-ignore
+
 export const ProfileDataReduxForm = reduxForm<ProfileDataFormType, Props>({form: 'edit-profile'})(ProfileDataForm)
