@@ -109,7 +109,7 @@ export type ContactsType = {
     github: string
     mainLink: string | null
 }
-type PhotosType = {
+export type PhotosType = {
     small: string
     large: string
 }
