@@ -3,6 +3,7 @@ import {ProfileInfo} from "./ProfileInfo/ProfileInfo";
 import {MyPostsContainer} from "./MyPosts/MyPostsContainer";
 import {ProfileType} from "../../redux/profile-reducer";
 import {ProfileDataFormType} from "./ProfileInfo/ProfileDataForm/ProfileDataForm";
+import s from "./Profile.module.css";
 
 type ProfilePropsType = {
     isOwner: boolean
@@ -15,7 +16,7 @@ type ProfilePropsType = {
 
 export const Profile: FC<ProfilePropsType> = ({profile, isOwner, status, updateStatus, savePhoto, saveProfile}) => {
     return (
-        <div>
+        <div className={s.profileWrapper}>
             <ProfileInfo isOwner={isOwner}
                          profile={profile}
                          status={status}

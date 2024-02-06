@@ -3,11 +3,12 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(66, 68, 110, 0.86);
+    background-color: #fff;
     padding: 0 15px;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.03);
 }
 .header img {
-    max-width: 50px;
+    max-width: 150px;
 }
 .loginBlock {
 

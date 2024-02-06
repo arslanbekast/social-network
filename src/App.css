@@ -4,15 +4,14 @@
   grid-template-areas:
   "header header"
   "navbar content";
-  max-width: 1200px;
   margin: 0 auto;
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  gap: 10px;
+  grid-template-rows: 96px 1fr;
+  grid-template-columns: 280px 1fr;
 
 }
 
 .main-wrapper {
   grid-area: content;
-  background-color: #77f0ff;
+  padding-top: 20px;
+  padding-bottom: 10px;
 }

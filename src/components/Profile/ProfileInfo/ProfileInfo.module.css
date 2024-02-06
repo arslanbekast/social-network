@@ -1,19 +1,93 @@
+.profileInfoWrapper {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
 .mainImgBox {
     max-height: 300px;
+    border-radius: 15px;
     overflow: hidden;
+    margin-bottom: 16px;
 }
 .mainImgBox img {
     object-fit: cover;
 }
 .descBlock {
-    padding: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
     display: flex;
     gap: 25px;
-    align-items: center;
+    align-items: start;
 }
-.userPhoto {
+.userPhotoBox {
+    position: relative;
     width: 100px;
     height: 100px;
+}
+.userPhoto {
+    position: absolute;
+    top: -45px;
+    width: 100px;
+    height: 100px;
+    padding: 4px;
+    background-color: #fff;
     border-radius: 100%;
     object-fit: cover;
+    overflow: hidden;
+}
+.userPhoto:hover .changePhotoBox {
+    display: block;
+}
+.userPhoto img {
+    width: 100%;
+    border-radius: 100%;
+    object-fit: cover;
+}
+.changePhotoBox {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgb(0 0 0 / 27%);
+    opacity: 0;
+    transition: all ease .3s;
+}
+.changePhotoBox:hover {
+    opacity: 1;
+}
+.changePhotoLabel {
+    font-family: "Open Sans", sans-serif;
+    position: absolute;
+    bottom: 16px;
+    left: 35px;
+    color: #dcdcdc;
+    font-size: 12px;
+    text-decoration: underline dotted;
+    cursor: pointer;
+}
+.changePhotoInput {
+    display: none;
+}
+.userFullName {
+    font-family: "Open Sans", sans-serif;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.userStatus {
+    font-family: "Open Sans", sans-serif;
+    color: #888;
+    font-weight: 500;
+    font-size: 12px;
+}
+.userStatusInput {
+    font-family: "Open Sans", sans-serif;
+    color: #888;
+    font-size: 12px;
+    outline: none;
+    border: none;
+    border-bottom: 1px solid #afafaf;
 }

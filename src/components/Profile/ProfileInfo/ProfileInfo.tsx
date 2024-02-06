@@ -45,16 +45,29 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({
     }
 
     return (
-        <div>
+        <div className={s.profileInfoWrapper}>
             <div className={s.mainImgBox}>
                 <img src={mainImg} alt="main image"/>
             </div>
 
             <div className={s.descBlock}>
-                <img className={s.userPhoto} src={profile.photos.large || noPhoto} alt="user image"/>
-                {isOwner && <input type="file" onChange={onMainPhotoSelected}/>}
+                <div className={s.userPhotoBox}>
+                    <div className={s.userPhoto}>
+                        <img src={profile.photos.large || noPhoto} alt="user image"/>
+                        {isOwner
+                            && <div className={s.changePhotoBox}>
+                                <label htmlFor="photoChange" className={s.changePhotoLabel}>change
+                                    <input type="file" className={s.changePhotoInput} id="photoChange"
+                                           onChange={onMainPhotoSelected}/>
+                                </label>
+                            </div>}
+
+
+                    </div>
+                </div>
 
                 <div>
+                    <div className={s.userFullName}>{profile.fullName}</div>
                     <ProfileStatusWithHooks status={status} updateStatus={updateStatus}/>
                 </div>
             </div>
