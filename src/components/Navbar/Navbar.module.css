@@ -3,6 +3,8 @@
     padding: 10px 15px;
 }
 .nav {
+    position: sticky;
+    top: 5px;
     background-color: #fff;
     border-radius: 15px;
     height: fit-content;
