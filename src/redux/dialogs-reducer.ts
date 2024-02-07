@@ -13,11 +13,11 @@ const initialState = {
         {id: 6, name: 'Valera'}
     ],
     messages: [
-        {id: 1, message: 'Hi'},
+        {id: 1, message: 'Hello. What is your name?'},
         {id: 2, message: 'How is your it'},
-        {id: 3, message: 'Yo'},
-        {id: 4, message: 'Yo'},
-        {id: 5, message: 'Yo'}
+        {id: 3, message: 'How are you?'},
+        {id: 4, message: 'Where did you study?'},
+        {id: 5, message: 'Where do you work?'}
     ]
 }
 
