@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import s from '../Dialogs.module.css';
+import s from './DialogItem.module.css';
 import {NavLink} from "react-router-dom";
 
 type DialogItemPropsType = {
@@ -10,8 +10,11 @@ type DialogItemPropsType = {
 export const DialogItem: FC<DialogItemPropsType> = ({id, name}) => {
     const path = `/dialogs/${id}`
     return (
-        <div className={s.dialog + ' ' + s.active}>
-            <NavLink to={path}>{name}</NavLink>
+        <div className={s.dialog}>
+            <NavLink to={path} activeClassName={s.active}>
+                <i className="fa-solid fa-user"></i>
+                {name}
+            </NavLink>
         </div>
     )
 }

@@ -1,19 +1,52 @@
 .dialogs {
     display: grid;
     grid-template-columns: 2fr 10fr;
+    max-width: 960px;
+    margin: 0 auto 0;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }
 .dialogsItems {
     padding: 10px;
 }
-.dialogsItems .active {
-    font-weight: bold;
-}
-.dialog {
 
-}
 .messages {
     padding: 10px;
 }
-.message {
-
+.addMessageForm {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+}
+.addMessageForm div div {
+    display: flex;
+    align-items: center;
+}
+.addMessageForm div div input {
+    width: 500px;
+    min-height: 20px;
+    padding: 6px 14px;
+    color: #818181;
+    font-family: "Open Sans", sans-serif;
+    font-weight: 500;
+    border: 2px solid #f1f1f1;
+    outline: none;
+    border-radius: 15px;
+}
+.addMessageForm button {
+    border: none;
+    padding: 9px 25px;
+    font-family: "Open Sans", sans-serif;
+    color: #00559a;
+    font-weight: 700;
+    border-radius: 15px;
+    cursor: pointer;
+    transition: all ease-in .2s;
+}
+.addMessageForm button:hover {
+    background-color: #1E74FD;
+    color: #fbfcfe;
 }

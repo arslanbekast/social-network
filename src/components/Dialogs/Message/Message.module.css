@@ -1,0 +1,8 @@
+.message {
+    width: fit-content;
+    padding: 8px 15px;
+    background-color: #143356;
+    color: #fff;
+    margin-bottom: 15px;
+    border-radius: 12px;
+}

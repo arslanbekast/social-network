@@ -1,0 +1,22 @@
+.dialog {
+
+}
+.dialog a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 0;
+    color: #888888;
+    text-decoration: none;
+    transition: color ease-in .2s;
+}
+.dialog:first-child a {
+    padding-top: 0;
+}
+.dialog a:hover {
+    color: #1E74FD;
+}
+.dialog a.active {
+    font-weight: bold;
+    color: #1E74FD;
+}

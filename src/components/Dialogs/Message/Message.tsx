@@ -1,5 +1,5 @@
 import React, {FC} from 'react';
-import s from '../Dialogs.module.css';
+import s from './Message.module.css';
 
 type MessagePropsType = {
     message: string
