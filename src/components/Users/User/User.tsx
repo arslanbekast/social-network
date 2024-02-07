@@ -22,21 +22,17 @@ export const User: FC<UserPropsType> = ({user, follow, unFollow, followingInProg
                              className={s.userPhoto}/>
                     </NavLink>
                 </div>
-                <div>
-                    {user.followed
-                        ? <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => unFollow(user.id)}>Unfollow</button>
-                        : <button disabled={followingInProgress.some(id => id === user.id)}
-                                  onClick={() => follow(user.id)}>Follow</button>}
-                </div>
             </div>
-            <div>
-                <div>{user.name}</div>
-                <div>{user.status}</div>
+            <div className={s.userInfo}>
+                <div className={s.userName}>{user.name}</div>
+                <div className={s.userStatus}>{user.status}</div>
             </div>
-            <div>
-                <div>{'u.location.country'}</div>
-                <div>{'u.location.city'}</div>
+            <div className={s.followBtn}>
+                {user.followed
+                    ? <button disabled={followingInProgress.some(id => id === user.id)}
+                              onClick={() => unFollow(user.id)}>UNFOLLOW</button>
+                    : <button disabled={followingInProgress.some(id => id === user.id)}
+                              onClick={() => follow(user.id)}>FOLLOW</button>}
             </div>
         </div>
     );

@@ -1,3 +1,9 @@
 .usersContent {
-    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto 0;
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
 }

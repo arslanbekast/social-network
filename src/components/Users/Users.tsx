@@ -19,11 +19,6 @@ export const Users: FC<UsersPropsType> = (props) => {
     const {users, pageSize, totalUsersCount, currentPage, onPageChanged, follow, unFollow, followingInProgress} = props
     return (
         <div className={s.usersContent}>
-            <Paginator pageSize={pageSize}
-                       totalItemsCount={totalUsersCount}
-                       currentPage={currentPage}
-                       onPageChanged={onPageChanged}/>
-
             {
                 users.map((u: UserType) => {
                     return (
@@ -34,6 +29,10 @@ export const Users: FC<UsersPropsType> = (props) => {
                     )
                 })
             }
+            <Paginator pageSize={pageSize}
+                       totalItemsCount={totalUsersCount}
+                       currentPage={currentPage}
+                       onPageChanged={onPageChanged}/>
         </div>
     );
 };

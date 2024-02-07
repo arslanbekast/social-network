@@ -1,7 +1,6 @@
 .userBox {
-    max-width: 800px;
+    padding: 0 10px 0 10px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     gap: 25px;
     margin-bottom: 35px;
@@ -16,4 +15,28 @@
     height: 100px;
     object-fit: cover;
     border-radius: 100%;
+}
+.followBtn {
+    margin-left: auto;
+}
+.userName {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+.userStatus {
+    color: #888;
+    font-weight: 500;
+    font-size: 12px;
+}
+.followBtn button {
+    width: 100px;
+    text-align: center;
+    padding: 12px 0;
+    border: none;
+    background-color: #1E74FD;
+    color: #fff;
+    font-weight: 700;
+    font-size: 12px;
+    border-radius: 30px;
+    cursor: pointer;
 }
