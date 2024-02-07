@@ -29,20 +29,24 @@ export const Paginator: FC<PaginatorPropsType> = ({pageSize, totalItemsCount, cu
         <div className={s.pagesBox}>
             {
                 portionNumber > 1 &&
-                <button onClick={() => setPortionNumber(portionNumber-1)}>Prev</button>
+                <button onClick={() => setPortionNumber(portionNumber - 1)}>
+                    <i className="fa-solid fa-chevron-left"></i>
+                </button>
             }
             {
                 pages
                     .filter(p => p >= leftPortionPageNumber && p <= rightPortionPageNumber)
                     .map(p => {
                     return <span key={p} style={{cursor: 'pointer'}}
-                                 className={currentPage === p ? s.selectedPage : ''}
+                                 className={currentPage === p ? s.pageNumber + " " + s.selectedPage : s.pageNumber}
                                  onClick={() => onPageChanged(p)}>{p}</span>
                 })
             }
             {
                 portionCount > portionNumber &&
-                <button onClick={() => setPortionNumber(portionNumber+1)}>Next</button>
+                <button onClick={() => setPortionNumber(portionNumber + 1)}>
+                    <i className="fa-solid fa-chevron-right"></i>
+                </button>
             }
         </div>
     );

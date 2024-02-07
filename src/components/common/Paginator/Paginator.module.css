@@ -6,9 +6,41 @@
     margin-bottom: 20px;
 }
 .pageNumber {
-    padding: 2px;
-    border: 1px solid grey;
+
+    color: #888888;
+}
+.pageNumber:hover {
+    color: #1E74FD;
+    font-weight: 700;
 }
 .selectedPage {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4px 8px;
+    background-color: #1E74FD;
+    color: #fff;
     font-weight: bold;
+    border-radius: 8px;
+}
+.selectedPage:hover {
+    color: #fff;
+}
+.pagesBox button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    font-size: 14px;
+    border: none;
+    background-color: #f5f5f5;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    cursor: pointer;
+    transition: all ease-in .2s;
+}
+.pagesBox button:hover {
+    background-color: #1E74FD;
+    color: #fbfcfe;
 }
