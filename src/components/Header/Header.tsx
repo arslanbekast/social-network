@@ -2,6 +2,7 @@ import React, {FC} from 'react';
 import logo from "../../assets/images/logo.png";
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
+import {Button} from "antd";
 
 type HeaderPropsType = {
     isAuth: boolean
@@ -19,8 +20,10 @@ export const Header: FC<HeaderPropsType> = ({isAuth, login, logout}) => {
                 {
                     isAuth
                         ? <div className={s.userNameBlock}>
-                            {login}
-                            <button onClick={logout}>Logout</button>
+                            <span className={s.userName}>{login}</span>
+                            <button title='Logout' className={s.logoutBtn} onClick={logout}>
+                                <i className="fa-solid fa-right-from-bracket"></i>
+                            </button>
                         </div>
                         : <NavLink to="/login">Login</NavLink>
                 }
