@@ -17,8 +17,7 @@ export const MyPosts = React.memo((props: MyPostsPropsType) => {
     }
 
     return (
-        <div className={s.postsBlock}>
-            <h2>My posts</h2>
+        <div className={s.postsWrapper}>
             <AddNewPostReduxForm onSubmit={onAddPost}/>
             <div className={s.posts}>
                 {
@@ -33,21 +32,30 @@ type FormDataType = {
     newPostText: string
 }
 
-const maxLength10 = maxLengthCreator(10)
+const maxLength1000 = maxLengthCreator(1000)
 const AddNewPostForm: FC<InjectedFormProps<FormDataType>> = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
-            <div>
-                <Field name="newPostText"
-                       component={Textarea}
-                       placeholder="Enter your post"
-                       validate={[required, maxLength10]}/>
-            </div>
-            <div>
-                <button>Add post</button>
-            </div>
+        <div className={s.addPostFormWrapper}>
+            <form onSubmit={props.handleSubmit} className={s.addPostForm}>
+                <div className={s.addPostFormTitleWrapper}>
+                    <div className={s.addPostFormIconWrapper}>
+                        <i className="fa-solid fa-pencil"></i>
+                    </div>
+                    <span className={s.addPostFormTitle}>Create post</span>
+                </div>
+                <div className={s.addPostField}>
+                    <Field name="newPostText"
+                           component={Textarea}
+                           placeholder="Enter your post"
+                           validate={[required, maxLength1000]}/>
+                </div>
+                <div className={s.addPostBtn}>
+                    <button>Add post</button>
+                </div>
 
-        </form>
+            </form>
+        </div>
+
     )
 }
 
