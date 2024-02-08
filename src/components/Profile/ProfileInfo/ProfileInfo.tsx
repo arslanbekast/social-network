@@ -85,9 +85,7 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({
                 {
                     editMode
                         ? <ProfileDataReduxForm profile={profile} initialValues={profile} onSubmit={onSubmit}/>
-                        : <ProfileData profile={profile}
-                                       isOwner={isOwner}
-                                       goToEditMode={() => setEditMode(true)}/>
+                        : <ProfileData profile={profile}/>
                 }
             </div>
         </>
@@ -96,10 +94,8 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({
 
 type ProfileDataProps = {
     profile: ProfileType
-    isOwner: boolean
-    goToEditMode: () => void
 }
-const ProfileData = ({profile, isOwner, goToEditMode}: ProfileDataProps) => {
+const ProfileData = ({profile}: ProfileDataProps) => {
 
     const profileContacts = Object.keys(profile.contacts) as Array<keyof ContactsType>;
 
