@@ -7,6 +7,7 @@ import {login} from "../../redux/auth-reducer";
 import {Redirect} from "react-router-dom";
 import {StateType} from "../../redux/redux-store";
 import style from '../common/FormsControls/FormsControls.module.css'
+import s from './Login.module.css'
 
 type MapStatePropsType = {
     isAuth: boolean
@@ -28,9 +29,11 @@ const Login: FC<LoginPropsType> = ({isAuth, login, captchaUrl}) => {
     }
 
     return (
-        <div>
-            <h1>Login</h1>
-            <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
+        <div className={s.loginWrapper}>
+            <div className={s.login}>
+                <h2 className={s.title}>Login into<br/>your account</h2>
+                <LoginReduxForm onSubmit={onSubmit} captchaUrl={captchaUrl}/>
+            </div>
         </div>
     );
 };
@@ -48,14 +51,23 @@ type FormDataType = {
 const LoginForm: FC<InjectedFormProps<FormDataType, LoginFormProps> & LoginFormProps> = ({handleSubmit, error, captchaUrl}) => {
 
     return (
-            <form onSubmit={handleSubmit}>
-                <div>
+            <form onSubmit={handleSubmit} className={s.loginForm}>
+                <div className={s.inputWrapper}>
+                    <div className={s.iconWrapper}>
+                        <i className="fa-regular fa-envelope"></i>
+                    </div>
+
                     <Field name="email" placeholder="Email" component={Input} validate={[required]}/>
                 </div>
-                <div>
-                    <Field type="password" name="password" placeholder="Password" component={Input} validate={[required]}/>
+                <div className={s.inputWrapper}>
+                    <div className={s.iconWrapper}>
+                        <i className="fa-solid fa-lock"></i>
+                    </div>
+
+                    <Field type="password" name="password" placeholder="Password" component={Input}
+                           validate={[required]}/>
                 </div>
-                <div style={{display: "flex", alignItems: "center"}}>
+                <div className={s.rememberWrapper}>
                     <Field type="checkbox" name="rememberMe" id="rememberMe" component={Input}/>
                     <label htmlFor="rememberMe">Remember me</label>
                 </div>
@@ -68,7 +80,7 @@ const LoginForm: FC<InjectedFormProps<FormDataType, LoginFormProps> & LoginFormP
                 }
 
                 <div>
-                    <button>Login</button>
+                    <button className={s.loginBtn}>Login</button>
                 </div>
             </form>
     );

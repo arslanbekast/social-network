@@ -7,10 +7,10 @@
     border: 1px solid red;
 }
 .formControl.error span {
-    color: #af0000;
+    color: #d90000;
+    font-family: Montserrat, sans-serif;
     font-weight: 500;
     font-size: 12px;
-    padding: 0 10px;
 }
 
 .formSummaryError {
