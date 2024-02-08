@@ -15,7 +15,11 @@
 
 .formSummaryError {
     width: fit-content;
-    border: 2px solid red;
-    padding: 5px;
+    border: 1px solid red;
+    padding: 5px 8px;
+    border-radius: 5px;
+    font-size: 14px;
+    font-family: Montserrat, sans-serif;
     color: #ff0000;
+    margin-bottom: 15px;
 }
