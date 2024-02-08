@@ -29,6 +29,7 @@
     width: 500px;
     min-height: 20px;
     padding: 6px 14px;
+    height: 36px;
     color: #818181;
     font-family: "Open Sans", sans-serif;
     font-weight: 500;
@@ -37,6 +38,7 @@
     border-radius: 15px;
 }
 .addMessageForm button {
+    height: 36px;
     border: none;
     padding: 9px 25px;
     font-family: "Open Sans", sans-serif;
