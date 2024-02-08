@@ -1,9 +1,83 @@
-.item {
+.postWrapper {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+    margin-bottom: 16px;
+}
+
+.post {
+    max-width: 582px;
     color: #cc00ff;
     margin-bottom: 10px;
+    font-family: Montserrat, sans-serif;
 }
-.item img {
-    width: 50px;
-    height: 50px;
+.post img {
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
+}
+.postAuthor {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 16px;
+}
+.authorNameWrapper {
+    display: flex;
+    flex-direction: column;
+}
+.authorName {
+    color: #212529;
+    font-weight: 700;
+    font-size: 12px;
+    margin-bottom: 4px;
+}
+.postTime {
+    font-weight: 500;
+    color: #adb5bd;
+    font-size: 12px;
+}
+.postText {
+    max-width: 534px;
+    color: #adb5bd;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 26px;
+    margin-bottom: 16px;
+}
+.seeMore {
+    padding-left: 10px;
+}
+.seeMore a {
+    font-weight: 600;
+    color: #1E74FD;
+    text-decoration: none;
+    outline: none;
+    font-size: 12px;
+}
+.postBottom {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.likeBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 25px;
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    background: linear-gradient(135deg, #05f, #09f);
+    cursor: pointer;
+}
+.likesCount {
+    font-weight: 600;
+    color: #212529;
+    font-size: 12px;
 }
