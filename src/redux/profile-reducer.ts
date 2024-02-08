@@ -14,10 +14,10 @@ const SAVE_PHOTO_SUCCESS = 'profile/SAVE-PHOTO-SUCCESS' as const
 // initial state
 const initialState: ProfilePageType = {
         posts: [
-            {id: 1, message: "Hi, how are you?", likesCount: 0},
-            {id: 3, message: "It's my first post", likesCount: 25},
-            {id: 4, message: "Blabla", likesCount: 13},
-            {id: 5, message: "Dadad", likesCount: 22},
+            {id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 12},
+            {id: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 33},
+            {id: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 13},
+            {id: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 24},
         ],
         profile: {
             contacts: {} as ContactsType,
