@@ -3,6 +3,7 @@ import {Field, InjectedFormProps, reduxForm} from "redux-form";
 import {Input, Textarea} from "../../../common/FormsControls/FormsControls";
 import {ProfileType} from "../../../../redux/profile-reducer";
 import style from "../../../common/FormsControls/FormsControls.module.css";
+import s from '../ProfileInfo.module.css'
 
 type Props = {
     profile: ProfileType
@@ -17,45 +18,50 @@ export type ProfileDataFormType = {
 const ProfileDataForm: FC<InjectedFormProps<ProfileDataFormType, Props> & Props> = ({handleSubmit, error, profile}) => {
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div>
-                <strong>Full name:</strong>
+        <form onSubmit={handleSubmit} className={s.aboutDataWrapper}>
+            <div className={s.aboutData}>
+                <span className={s.aboutDataTitle}>Full name:</span>
                 <Field name="fullName" placeholder="Full name" component={Input}/>
             </div>
-            <div>
-                <strong>Looking for a job:</strong>
+            <div className={s.aboutData}>
+                <span className={s.aboutDataTitle}>Looking for a job:</span>
                 <Field name="lookingForAJob" type="checkbox" component={Input}/>
             </div>
-            <div>
-                <strong>My professional skills:</strong>
+            <div className={s.aboutData}>
+                <span className={s.aboutDataTitle}>My professional skills:</span>
                 <Field name="lookingForAJobDescription" placeholder="My professional skills" component={Textarea}/>
             </div>
-            <div>
-                <strong>About me:</strong>
+            <div className={s.aboutData}>
+                <span className={s.aboutDataTitle}>About me:</span>
                 <Field name="aboutMe" placeholder="About me" component={Textarea}/>
             </div>
 
-            <div>
-                <strong>Contacts:</strong>
-                {
-                    profile.contacts &&
-                    Object.keys(profile.contacts).map(key => {
-                        return (
-                            <div key={key}>
-                                <strong>{key}:</strong>
-                                <Field name={"contacts."+key} placeholder={key} component={Input}/>
-                            </div>
-                        )
+            <div className={s.aboutData + " " + s.editAboutData}>
+                <span className={s.aboutDataTitle}>Contacts:</span>
+                <div className={s.editContactsWrapper}>
+                    {
+                        profile.contacts &&
+                        Object.keys(profile.contacts).map(key => {
+                            return (
+                                <div key={key} className={s.editContact}>
+                                    <span className={s.aboutDataTitle}>{key}:</span>
+                                    <Field name={"contacts." + key} placeholder={key} component={Input}/>
+                                </div>
+                            )
 
-                    })
-                }
+                        })
+                    }
+                </div>
             </div>
             {
-                error && <div className={style.formSummaryError}>
+            error && <div className={style.formSummaryError}>
                     {error}
                 </div>
             }
-            <button>Save</button>
+            <button className={s.saveBtn}>
+                <i className="fa-regular fa-floppy-disk"></i>
+                Save
+            </button>
         </form>
     )
 }

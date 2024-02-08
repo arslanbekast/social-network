@@ -4,6 +4,7 @@
     padding: 16px;
     box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
     overflow: hidden;
+    margin-bottom: 16px;
 }
 .mainImgBox {
     max-height: 300px;
@@ -90,4 +91,122 @@
     outline: none;
     border: none;
     border-bottom: 1px solid #afafaf;
+}
+
+.aboutWrapper {
+    background-color: #fff;
+    border-radius: 15px;
+    padding: 16px 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+    overflow: hidden;
+}
+.aboutTitleWrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+.aboutTitle {
+    font-family: Montserrat, sans-serif;
+    margin: 0;
+    color: #212529;
+    font-size: 14px;
+    font-weight: 700;
+}
+.editBtn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    font-size: 16px;
+    border: none;
+    background-color: transparent;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    transition: all ease-in .2s;
+}
+.editBtn:hover {
+    color: #1E74FD;
+}
+.aboutDataWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    font-family: Montserrat, sans-serif;
+}
+.aboutData {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.aboutData div div {
+    display: flex;
+    align-items: center;
+}
+.editAboutData {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.aboutDataTitle {
+    color: #212529;
+    font-size: 14px;
+    font-weight: 700;
+}
+.aboutDataText {
+    font-weight: 500;
+    color: #adb5bd;
+    font-size: 12px;
+}
+.aboutData input, .aboutData textarea {
+    border: none;
+    font-size: 12px;
+    font-family: Montserrat, sans-serif;
+    border-bottom: 1px solid #adb5bd;
+    color: #adb5bd;
+    outline: none;
+}
+.aboutData textarea {
+    width: 500px;
+    max-height: 20px;
+}
+.contactsWrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.editContactsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 15px;
+}
+.editContact {
+    display: flex;
+    gap: 10px;
+}
+.contacts a {
+    color: #adb5bd;
+}
+.contacts a:hover {
+    color: #1E74FD;
+}
+.saveBtn {
+    max-width: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    cursor: pointer;
+    border: none;
+    padding: 10px 5px;
+    border-radius: 7px;
+    background-color: #343a40;
+    color: #fff;
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+}
+.saveBtn:hover {
+    background-color: #1E74FD;
 }
