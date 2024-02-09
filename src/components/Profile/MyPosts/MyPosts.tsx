@@ -9,6 +9,7 @@ import {PostType} from "../../../redux/profile-reducer";
 type MyPostsPropsType = {
     posts: PostType[]
     addPost: (newPostText: string) => void
+    likeIncrease: (postId: string) => void
 }
 export const MyPosts = React.memo((props: MyPostsPropsType) => {
     let {posts, addPost} = props;
@@ -21,7 +22,7 @@ export const MyPosts = React.memo((props: MyPostsPropsType) => {
             <AddNewPostReduxForm onSubmit={onAddPost}/>
             <div className={s.posts}>
                 {
-                    posts.map(p => <Post key={p.id} message={p.message} likesCount={p.likesCount}/>)
+                    posts.map(p => <Post key={p.id} postId={p.id} message={p.message} likesCount={p.likesCount} likeIncrease={props.likeIncrease}/>)
                 }
             </div>
         </div>

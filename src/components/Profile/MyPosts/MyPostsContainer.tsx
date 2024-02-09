@@ -1,5 +1,5 @@
 import React from 'react';
-import {addPostAC, ProfileActionsType} from "../../../redux/profile-reducer";
+import {addPostAC, likeIncrease, ProfileActionsType} from "../../../redux/profile-reducer";
 import {MyPosts} from "./MyPosts";
 import {StateType} from "../../../redux/redux-store";
 import {connect} from "react-redux";
@@ -13,6 +13,9 @@ const mapDispatchToProps = (dispatch: (action: ProfileActionsType) => void) => {
     return {
         addPost: (newPostText: string) => {
             dispatch(addPostAC(newPostText))
+        },
+        likeIncrease: (postId: string) => {
+            dispatch(likeIncrease(postId))
         }
     }
 }

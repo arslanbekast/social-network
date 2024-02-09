@@ -3,6 +3,7 @@ import {profileAPI, usersAPI} from "../api/api";
 import {ProfileDataFormType} from "../components/Profile/ProfileInfo/ProfileDataForm/ProfileDataForm";
 import {StateType} from "./redux-store";
 import {stopSubmit} from "redux-form";
+import {generateUniqueID} from "web-vitals/dist/modules/lib/generateUniqueID";
 
 // action types
 const ADD_POST = 'profile/ADD-POST' as const
@@ -10,14 +11,15 @@ const DELETE_POST = 'profile/DELETE-POST' as const
 const SET_USER_PROFILE = 'profile/SET-USER-PROFILE' as const
 const SET_STATUS = 'profile/SET-STATUS' as const
 const SAVE_PHOTO_SUCCESS = 'profile/SAVE-PHOTO-SUCCESS' as const
+const LIKE_INCREASE = 'profile/LIKE-INCREASE' as const
 
 // initial state
 const initialState: ProfilePageType = {
         posts: [
-            {id: 1, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 12},
-            {id: 3, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 33},
-            {id: 4, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 13},
-            {id: 5, message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 24},
+            {id: generateUniqueID(), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 12},
+            {id: generateUniqueID(), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 33},
+            {id: generateUniqueID(), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 13},
+            {id: generateUniqueID(), message: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi nulla dolor, ornare at commodo non, feugiat non nisi. Phasellus faucibus mollis pharetra. Proin blandit ac massa sed rhoncus.", likesCount: 24},
         ],
         profile: {
             contacts: {} as ContactsType,
@@ -31,7 +33,7 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
 
     switch (action.type) {
         case ADD_POST:
-            const newPost = {id: 6, message: action.newPostText, likesCount: 0}
+            const newPost = {id: generateUniqueID(), message: action.newPostText, likesCount: 0}
             return {...state, posts: [newPost, ...state.posts]}
         case DELETE_POST:
             return {...state, posts: state.posts.filter(p => p.id !== action.postId)}
@@ -41,6 +43,8 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
             return {...state, status: action.status}
         case SAVE_PHOTO_SUCCESS:
             return {...state, profile: {...state.profile, photos: action.photos}}
+        case LIKE_INCREASE:
+            return {...state, posts: state.posts.map(p => p.id !== action.postId ? p : {...p, likesCount: p.likesCount+1})}
         default:
             return state
     }
@@ -49,11 +53,11 @@ export const profileReducer = (state: ProfilePageType = initialState, action: Pr
 
 // action creators
 export const addPostAC = (newPostText: string) => ({type: ADD_POST, newPostText})
-export const deletePostAC = (postId: number) => ({type: DELETE_POST, postId})
+export const deletePostAC = (postId: string) => ({type: DELETE_POST, postId})
 export const setUserProfile = (profile: ProfileType) => ({type: SET_USER_PROFILE, profile})
 export const setStatus = (status: string) => ({type: SET_STATUS, status})
-
 export const savePhotoSuccess = (photos: PhotosType) => ({type: SAVE_PHOTO_SUCCESS, photos})
+export const likeIncrease = (postId: string) => ({type: LIKE_INCREASE, postId})
 
 // thunks
 export const getUserProfile = (userId: number) => async (dispatch: Dispatch) => {
@@ -123,7 +127,7 @@ export type ProfileType = {
     userId?: number
 }
 export type PostType = {
-    id: number
+    id: string
     message: string
     likesCount: number
 }
@@ -138,3 +142,4 @@ export type ProfileActionsType = ReturnType<typeof addPostAC>
     | ReturnType<typeof setUserProfile>
     | ReturnType<typeof setStatus>
     | ReturnType<typeof savePhotoSuccess>
+    | ReturnType<typeof likeIncrease>

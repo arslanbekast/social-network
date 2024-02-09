@@ -3,11 +3,18 @@ import s from "./Post.module.css";
 import noPhoto from '../../../../assets/images/noPhoto.jpg'
 
 type PostPropsType = {
+    postId: string
     message: string
     likesCount: number
+    likeIncrease: (postId: string) => void
 }
 
-export const Post: FC<PostPropsType> = ({message, likesCount}) => {
+export const Post: FC<PostPropsType> = ({postId, message, likesCount, likeIncrease}) => {
+
+    const onLikeIncrease = () => {
+        likeIncrease(postId)
+    }
+
     return (
         <div className={s.postWrapper}>
             <div className={s.post}>
@@ -31,7 +38,7 @@ export const Post: FC<PostPropsType> = ({message, likesCount}) => {
                 </div>
 
                 <div className={s.postBottom}>
-                    <button className={s.likeBtn}><i className="fa-solid fa-thumbs-up"></i></button>
+                    <button className={s.likeBtn} onClick={onLikeIncrease}><i className="fa-solid fa-thumbs-up"></i></button>
                     <span className={s.likesCount}>{likesCount}</span>
                 </div>
             </div>
