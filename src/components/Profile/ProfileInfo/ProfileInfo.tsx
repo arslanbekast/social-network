@@ -126,7 +126,7 @@ const ProfileData = ({profile}: ProfileDataProps) => {
                 <div className={s.contactsWrapper}>
                     {
                         profileContacts.map((key) => {
-                            return <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key] }/>
+                            return profile.contacts[key] && <Contacts key={key} contactTitle={key} contactValue={profile.contacts[key] }/>
                         })
                     }
                 </div>
