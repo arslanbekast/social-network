@@ -2,7 +2,6 @@ import React, {FC} from 'react';
 import logo from "../../assets/images/logo.png";
 import s from './Header.module.css'
 import {NavLink} from "react-router-dom";
-import {Button} from "antd";
 
 type HeaderPropsType = {
     isAuth: boolean
