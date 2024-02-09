@@ -39,7 +39,7 @@ export const Post: FC<PostPropsType> = ({postId, message, likesCount, likeIncrea
 
                 <div className={s.postBottom}>
                     <button className={s.likeBtn} onClick={onLikeIncrease}><i className="fa-solid fa-thumbs-up"></i></button>
-                    <span className={s.likesCount}>{likesCount}</span>
+                    <span className={s.likesCount}>{likesCount} Like</span>
                 </div>
             </div>
         </div>
