@@ -54,7 +54,7 @@ class ProfileContainer extends Component<PropsType> {
     }
 
     componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<MapStatePropsType>) {
-        if (this.props.match.params.userId !== prevProps.match.params.userId) {
+        if (this.props.match.params.userId !== prevProps.match.params.userId || this.props.isAuth !== prevProps.isAuth) {
             this.refreshProfile()
         }
     }
