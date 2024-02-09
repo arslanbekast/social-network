@@ -76,7 +76,7 @@ export const ProfileInfo: FC<ProfileInfoPropsType> = ({
             <div className={s.aboutWrapper}>
                 <div className={s.aboutTitleWrapper}>
                     <h3 className={s.aboutTitle}>About</h3>
-                    {isOwner &&
+                    {isOwner && !editMode &&
                         <button className={s.editBtn} onClick={() => setEditMode(true)}>
                             <i className="fa-regular fa-pen-to-square"></i>
                         </button>}
