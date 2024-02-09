@@ -23,7 +23,7 @@ export const Profile: FC<ProfilePropsType> = ({profile, isOwner, status, updateS
                          updateStatus={updateStatus}
                          savePhoto={savePhoto}
                          saveProfile={saveProfile}/>
-            <MyPostsContainer/>
+            { isOwner && <MyPostsContainer/> }
         </div>
     );
 };
