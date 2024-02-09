@@ -53,7 +53,7 @@ class ProfileContainer extends Component<PropsType> {
         this.refreshProfile()
     }
 
-    componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<{}>) {
+    componentDidUpdate(prevProps: Readonly<PropsType>, prevState: Readonly<MapStatePropsType>) {
         if (this.props.match.params.userId !== prevProps.match.params.userId) {
             this.refreshProfile()
         }
